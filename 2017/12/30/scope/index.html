@@ -6,17 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://huanghaibin91.github.io">
-  <title>Archives: 2017/12 | HHB&#39;s BLOG</title>
+  <title>My-JS之作用域 | HHB&#39;s BLOG</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="huanghaibin91 的博客">
-<meta property="og:type" content="website">
-<meta property="og:title" content="HHB&#39;s BLOG">
-<meta property="og:url" content="https://huanghaibin91.github.io/archives/2017/12/index.html">
+  <meta name="description" content="作用域和作用域链概念 作用域就是变量与函数的可访问范围，即作用域控制着变量与函数的可见性和生命周期。在JavaScript中，变量的作用域有全局作用域和局部作用域两种。  全局作用域，在代码中任何地方都能访问到的对象拥有全局作用域，一般来说以下几种情形拥有全局作用域：  最外层函数和在最外层函数外面定义的变量拥有全局作用域； 所有末定义直接赋值的变量自动声明为拥有全局作用域； 浏览器环境中，所有w">
+<meta name="keywords" content="前端,JavaScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="My-JS之作用域">
+<meta property="og:url" content="https://huanghaibin91.github.io/2017/12/30/scope/index.html">
 <meta property="og:site_name" content="HHB&#39;s BLOG">
-<meta property="og:description" content="huanghaibin91 的博客">
+<meta property="og:description" content="作用域和作用域链概念 作用域就是变量与函数的可访问范围，即作用域控制着变量与函数的可见性和生命周期。在JavaScript中，变量的作用域有全局作用域和局部作用域两种。  全局作用域，在代码中任何地方都能访问到的对象拥有全局作用域，一般来说以下几种情形拥有全局作用域：  最外层函数和在最外层函数外面定义的变量拥有全局作用域； 所有末定义直接赋值的变量自动声明为拥有全局作用域； 浏览器环境中，所有w">
+<meta property="og:updated_time" content="2017-12-30T06:28:40.286Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="HHB&#39;s BLOG">
-<meta name="twitter:description" content="huanghaibin91 的博客">
+<meta name="twitter:title" content="My-JS之作用域">
+<meta name="twitter:description" content="作用域和作用域链概念 作用域就是变量与函数的可访问范围，即作用域控制着变量与函数的可见性和生命周期。在JavaScript中，变量的作用域有全局作用域和局部作用域两种。  全局作用域，在代码中任何地方都能访问到的对象拥有全局作用域，一般来说以下几种情形拥有全局作用域：  最外层函数和在最外层函数外面定义的变量拥有全局作用域； 所有末定义直接赋值的变量自动声明为拥有全局作用域； 浏览器环境中，所有w">
   
     <link rel="alternative" href="/atom.xml" title="HHB&#39;s BLOG" type="application/atom+xml">
   
@@ -144,162 +146,186 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-scope" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/12/30/closure/" class="archive-article-date">
-  	<time datetime="2017-12-30T06:36:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-30</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/12/30/closure/">My-JS之闭包</a>
+    <h1 class="article-title" itemprop="name">
+      My-JS之作用域
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">前端</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/12/30/function/" class="archive-article-date">
-  	<time datetime="2017-12-30T06:29:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/12/30/function/">My-JS之函数</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">前端</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/12/30/execution-context/" class="archive-article-date">
-  	<time datetime="2017-12-30T06:27:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/12/30/execution-context/">My-JS之执行上下文</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">前端</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/12/30/scope/" class="archive-article-date">
+        
+        <a href="/2017/12/30/scope/" class="archive-article-date">
   	<time datetime="2017-12-30T06:25:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-30</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/12/30/scope/">My-JS之作用域</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>作用域和作用域链概念</strong></p>
+<p>作用域就是变量与函数的可访问范围，即作用域控制着变量与函数的可见性和生命周期。在JavaScript中，变量的作用域有全局作用域和局部作用域两种。</p>
+<ul>
+<li><p>全局作用域，在代码中任何地方都能访问到的对象拥有全局作用域，一般来说以下几种情形拥有全局作用域：</p>
+<ul>
+<li>最外层函数和在最外层函数外面定义的变量拥有全局作用域；</li>
+<li>所有末定义直接赋值的变量自动声明为拥有全局作用域；</li>
+<li>浏览器环境中，所有window对象的属性拥有全局作用域；</li>
+</ul>
+</li>
+<li><p>局部作用域，局部作用域一般只在固定的代码片段内可访问到，在JS中一般是函数作用域；</p>
+</li>
+</ul>
+<a id="more"></a>
+<p>作用域链，当代码在一个环境中执行时，会创建变量对象的一个作用域链，作用域链的作用是保证对执行环境有权访问的所有变量和函数的有序访问。全局执行环境的变量对象始终都是作用域链中最后一个对象。</p>
+<p><strong>作用域规则</strong></p>
+<p>作用域有一套根据名称查找变量的规则。</p>
+<p>实际情况中，通常需要同时顾及几个作用域，当一个块或函数嵌套在另一个块或函数中时，就发生了作用域的嵌套。因此，在当前作用域中无法找到某个变量时，引擎就会在外层嵌套的作用域中继续查找，直到找到该变量，或抵达最外层的作用域（也就是全局作用域）为止。但不能通过向下搜索作用域链而进入另一个执行环境。</p>
+<pre><code>var a = 1;
+function f() {
+    var a = 2;
+    var b = 3;
+    console.log(a);
+}
+f(); // 2
+a // 1
+b // 报错
+</code></pre><p><strong>作用域工作模型</strong></p>
+<p>JS作用域的工作模型是词法作用域，词法作用域就是定义在词法阶段的作用域。 换句话说，词法作用域是由你在写代码时将变量和块作用域写在哪里来决定的，因此当词法分析器处理代码时会保持作用域不变（大部分情况下是这样的）。</p>
+<pre><code>function f1() {
+    console.log(a); 
+}
+f1(); // 输出undefined
+function f2() {
+    var a = 2;
+    f1();
+}
+var a = 1;
+f1(); // 1
+f2(); // 1，因为f1定义时的作用域的a为全局的a = 1，说明函数不管在哪里调用都是基于它定义时的作用域
+</code></pre><p>上面代码中，当函数执行时，会先查找所需的变量，作用域查找会在找到第一个匹配的标识符时停止。在多层的嵌套作用域中可以定义同名的标识符，这叫作“ 遮蔽效应”（ 内部的标识符“ 遮蔽”了外部的标识符）。抛开遮蔽效应，作用域查找始终从运行时所处的最内部作用域开始，逐级向外或者说向上进行，直到遇见第一个匹配的标识符为止。词法作用域规则会使函数在查找变量时从函数内部再到函数定义时的作用域，而不是从函数内部到函数使用时的作用域。所以无论函数在哪里被调用，也无论它如何被调用，它的词法作用域都只由函数被声明时所处的位置决定。</p>
+<p><strong>函数作用域</strong></p>
+<p>JS中没有块级作用域，而是基于函数的作用域。函数作用域的含义是指，属于这个函数的全部变量都可以在整个函数的范围内使用及复用（事实上在嵌套的作用域中也可以使用）。 </p>
+<pre><code>function f() {
+    if (true) {
+        var a = 1;
+    }
+    console.log(a);
+}
+f(); // 1，if不会生成新的作用域，所以a会泄露到当前函数作用域
+</code></pre><p>利用函数作用域的特点，我们可以在任意代码片段外部添加包装函数，可以将内部的变量和函数定义“隐<br>藏”起来，外部作用域无法访问包装函数内部的任何内容。</p>
+<pre><code>var a = 1;
+(function f() {
+    var a = 2;
+    console.log( a ); // 2，利用函数作用域包装代码，使函数内部变量不会被外部访问
+})();
+console.log(a); // 1
+</code></pre><p><strong>声明提升</strong></p>
+<pre><code>var a = 1;
+function f() {
+    console.log(a); // undefined，不是1
+    var a = 2;
+    console.log(a); // 2
+}
+f();
 
-        <div class="article-info info-on-right">
-          
+// 上面代码解析为
+function f() {
+    var a;
+    console.log(a); 
+    a = 2;
+    console.log(a);
+}
+var a;
+a = 1;
+f();
+</code></pre><p>这个过程就是声明提升。</p>
+<p>声明提升是因为JS在执行之前，会有一个预编译过程，预编译阶段生成变量声明和函数声明，没有初始化行为（赋值），匿名函数不参与预编译只有在解释执行阶段才会进行变量初始化 。</p>
+<p><a href="https://github.com/huanghaibin91/My-JS/blob/master/md/execution-context.md" target="_blank" rel="external">声明提升原理</a></p>
+<p>函数和变量的预解析特点：</p>
+<ol>
+<li>函数声明会置顶</li>
+<li>变量声明也会置顶</li>
+<li>函数声明比变量声明更置顶：(函数在变量上面)</li>
+<li>变量和赋值语句一起书写，在js引擎解析时，会将其拆成声明和赋值2部分，声明置顶，赋值保留在原来位置</li>
+<li><p>声明过的变量不会重复声明</p>
+<p> 例一：    </p>
+<pre><code>conso.log(a); // function a() {}
+var a = 1;
+function a() {
+    //
+};
+console.log(a); // 1
+
+// 上面代码解析为:
+function a() { // 先提升函数声明
+    //
+}
+var a; // 函数声明已经有同名的，所以重复的var声明被忽略，但赋值不会
+console.log(a); // function a() {}
+a = 1; 
+console.log(a); // 1，函数声明在变量声明之前
+</code></pre><p> 例二：</p>
+<pre><code>(function () {
+    a = 1;
+    alert(window.a); // undefined
+    var a = 2; // JS预编译阶段会把变量声明即（var声明变量）和函数声明提升到作用域顶端
+    alert(a); // 2
+})();
+
+// 上面代码解析
+(function () {
+    var a; // a被提升到顶端后，a = 1就不是隐式声明全局变量了，而是给a赋值操作，所以window.a未声明为undefined
+    a = 1;
+    alert(window.a);
+    a = 2;
+    alert(a);
+})();
+</code></pre></li>
+</ol>
+<p><strong>欺骗函数作用域</strong></p>
+<p>执行环境类型只有两种，全局和局部函数，但可以用其它方法欺骗函数作用域。</p>
+<ul>
+<li><p>eval()，JavaScript中的eval(..)函数可以接受一个字符串为参数，并将其中的内容视为好像在书<br>写时就存在于程序中这个位置的代码并在运行到此位置执行参数代码。因为eval(..)可以在运行期修改书写期的词法作用域，存在安全问题，不建议使用。</p>
+<pre><code>var a = 1;
+function f() {
+    eval(&apos;var a = 2;&apos;); // eval中的a遮蔽了全局中的a，让作用域弹出的a改变了
+    console.log(a);
+}
+
+f(); // 2
+</code></pre></li>
+<li><p>with，with语句接收一个对象参数，表示with语句的对象作用域，with语句中的变量都会在这个指定的对象中查找。with会影响性能 ，不建议使用。</p>
+<pre><code>var a = 0;
+var obj = {
+    a: 1,
+    b: 2
+};
+
+with(obj) {
+    a = 2; // 会在obj中查找a属性
+}
+obj.a; // 2
+a //0
+
+with(obj) {
+    c = 3; // 没有在指定对象中找到c，非严格模式下，with会在全局隐式创建一个全局变量
+}
+obj.c; // undefined
+c  // 3
+</code></pre></li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -315,168 +341,64 @@
 		</ul>
 	</div>
 
-          
+      
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/12/29/type-conversion/" class="archive-article-date">
-  	<time datetime="2017-12-29T13:12:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-29</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2017/12/30/execution-context/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          My-JS之执行上下文
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/12/29/type-conversion/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">My-JS之类型转换</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/12/29/type-conversion/">My-JS之类型转换</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/12/29/type-detection/" class="archive-article-date">
-  	<time datetime="2017-12-29T13:10:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-29</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/12/29/type-detection/">My-JS之类型检测</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">前端</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/12/29/variable/" class="archive-article-date">
-  	<time datetime="2017-12-29T12:57:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-29</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/12/29/variable/">My-JS之变量</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">前端</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/12/29/hello-world/" class="archive-article-date">
-  	<time datetime="2017-12-29T08:48:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-29</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/12/29/hello-world/">Hello World</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">hello world</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -500,8 +422,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

@@ -6,17 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://huanghaibin91.github.io">
-  <title>Archives: 2017/12 | HHB&#39;s BLOG</title>
+  <title>My-JS之闭包 | HHB&#39;s BLOG</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="huanghaibin91 的博客">
-<meta property="og:type" content="website">
-<meta property="og:title" content="HHB&#39;s BLOG">
-<meta property="og:url" content="https://huanghaibin91.github.io/archives/2017/12/index.html">
+  <meta name="description" content="闭包是JS中一个很重要的概念，闭包其实是基于词法作用域规则实现的，词法作用域规则会使函数在查找变量时从函数内部再到函数定义时的作用域，而不是从函数内部到函数使用时的作用域。所以无论函数在哪里被调用，也无论它如何被调用，它的词法作用域都只由函数被声明时所处的位置决定。 基于这个规则，那么函数在当前词法作用域之外执行，也可以记住并访问函数声明时所在的词法作用域，这时就产生了闭包。 高程定义闭包：闭包是">
+<meta name="keywords" content="前端,JavaScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="My-JS之闭包">
+<meta property="og:url" content="https://huanghaibin91.github.io/2017/12/30/closure/index.html">
 <meta property="og:site_name" content="HHB&#39;s BLOG">
-<meta property="og:description" content="huanghaibin91 的博客">
+<meta property="og:description" content="闭包是JS中一个很重要的概念，闭包其实是基于词法作用域规则实现的，词法作用域规则会使函数在查找变量时从函数内部再到函数定义时的作用域，而不是从函数内部到函数使用时的作用域。所以无论函数在哪里被调用，也无论它如何被调用，它的词法作用域都只由函数被声明时所处的位置决定。 基于这个规则，那么函数在当前词法作用域之外执行，也可以记住并访问函数声明时所在的词法作用域，这时就产生了闭包。 高程定义闭包：闭包是">
+<meta property="og:updated_time" content="2017-12-30T06:37:45.996Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="HHB&#39;s BLOG">
-<meta name="twitter:description" content="huanghaibin91 的博客">
+<meta name="twitter:title" content="My-JS之闭包">
+<meta name="twitter:description" content="闭包是JS中一个很重要的概念，闭包其实是基于词法作用域规则实现的，词法作用域规则会使函数在查找变量时从函数内部再到函数定义时的作用域，而不是从函数内部到函数使用时的作用域。所以无论函数在哪里被调用，也无论它如何被调用，它的词法作用域都只由函数被声明时所处的位置决定。 基于这个规则，那么函数在当前词法作用域之外执行，也可以记住并访问函数声明时所在的词法作用域，这时就产生了闭包。 高程定义闭包：闭包是">
   
     <link rel="alternative" href="/atom.xml" title="HHB&#39;s BLOG" type="application/atom+xml">
   
@@ -144,36 +146,120 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-closure" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      My-JS之闭包
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/12/30/closure/" class="archive-article-date">
+
+        
+        <a href="/2017/12/30/closure/" class="archive-article-date">
   	<time datetime="2017-12-30T06:36:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-30</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/12/30/closure/">My-JS之闭包</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>闭包是JS中一个很重要的概念，闭包其实是基于词法作用域规则实现的，词法作用域规则会使函数在查找变量时从函数内部再到函数定义时的作用域，而不是从函数内部到函数使用时的作用域。所以无论函数在哪里被调用，也无论它如何被调用，它的词法作用域都只由函数被声明时所处的位置决定。</p>
+<p>基于这个规则，那么函数在当前词法作用域之外执行，也可以记住并访问函数声明时所在的词法作用域，这时就产生了闭包。</p>
+<p>高程定义闭包：闭包是指有权访问另一个函数作用域中的变量的函数。</p>
+<a id="more"></a>
+<pre><code>function f1() {
+    var a = 1; // 3.调用的函数内部使用了父级作用域的内部变量
+    function f2() { // 1.调用的函数是父级作用域内部声明的
+        console.log(a);
+    }
+    return f2;
+}
+var f3 = f1(); // 2.调用的函数是在父级作用域之外进行调用，foo()执行后将bar 函数本身当作一个值类型进行传递给baz。
+f3(); // 这就是闭包的效果。执行之后，输出f1中的a，因为不论何时何处调用f2都能访问f1的变量所以f1不会被回收
+</code></pre><p><strong>闭包产生条件</strong></p>
+<p>通过以上代码，我们可以得到闭包产生的条件：</p>
+<ol>
+<li>调用的函数是父级作用域内部声明的；</li>
+<li>调用的函数是在父级作用域之外进行调用；</li>
+<li>调用的函数内部使用了父级作用域的内部变量；</li>
+</ol>
+<p>总结便是：无论使用何种方式对函数类型的值进行传递，当函数在别处被调用时都可以观察到闭包。</p>
+<pre><code>// 无论通过何种手段将内部函数传递到所在的词法作用域以外， 它都会持有对原始定义作用域的引用，无论在何处执行这个函数都会使用闭包。
 
-        <div class="article-info info-on-right">
-          
+function foo1() {
+    var a = 1;
+    function baz1() {
+        console.log(a); // 1
+    }
+    bar1(baz1); // baz1被作为参数传递到外部函数bar1中
+}
+function bar1(fn) {
+    fn(); // 这就是闭包！
+}
+foo1();
+
+var fn2;
+function foo2() {
+    var a = 2;
+    function baz2() {
+        console.log(a);
+    }
+    fn2 = baz2; // 将 baz2分配给全局变量，也相当于传递到外部
+}
+function bar2() {
+    fn2(); // 这就是闭包！
+}
+foo2();
+bar2(); // 2
+
+// 主要看看是否是外部调用。因为用户点击时触发事件，不是在foo3中内部调用的。
+var foo3 = function () {
+    var btn = document.querySelector(&quot;#myBtn&quot;);
+    var a = 3;
+    btn.onclick = function () {
+        alert(a);
+    }
+}
+foo3();
+</code></pre><p>下面是一个关于闭包的经典例子：</p>
+<pre><code>for (var i = 1; i &lt;= 5; i++) { // 只有一个全局作用域，运行timer是寻找变量i只有全局的i = 6
+    setTimeout(function timer() {
+        console.log(i); // 运行时会以每秒一次的频率输出五次 6
+    }, i * 1000);
+}
+// 首先解释6是从哪里来的。 这个循环的终止条件是i不再&lt;=5。 条件首次成立时i的值是6。因此，输出显示的是循环结束时i的最终值。延迟函数的回调会在循环结束时才执行。事实上，当定时器运行时即使每个迭代中执行的是setTimeout(.., 0)，所有的回调函数依然是在循环结束后才会被执行，因此会每次输出一个6出来。
+
+for (var i = 1; i &lt;= 5; i++) { 
+    // 每次循环创建一个立即函数，产生一个新的作用域
+    (function (j) { // 利用立即函数，每次循环创建单独的函数作用域并捕获每次循环的i作为参数传入，timer函数是一个闭包，它在立即函数中声明，在setTimeOut回调使用，它会保留传入的参数i的值，当延迟函数在作用域之外调用时，仍能访问到i
+        setTimeout(function timer() {
+            console.log(j); // 能够正常输出1, 2, 3, 4, 5
+        }, j * 1000);
+    })(i);
+}
+</code></pre><p><strong>闭包作用</strong></p>
+<p>闭包的最大用处有两个，一个是可以读取函数内部的变量，另一个就是让这些变量始终保持在内存中。函数的执行上下文，在执行完毕之后，生命周期结束，那么该函数的执行上下文就会失去引用。其占用的内存空间很快就会被垃圾回收器释放。可是闭包的存在，会阻止这一过程虽然例子中的闭包被保存在了全局变量中，但是闭包的作用域链并不会发生任何改变。在闭包中，能访问到的变量，仍然是作用域链上能够查询到的变量即闭包可以使得它诞生环境一直存在。请看下面的例子，闭包使得内部变量记住上一次调用时的运算结果:</p>
+<pre><code>function addNum(num) {
+    return function () {
+        return num++;
+    };
+}
+var add = addNum(1);
+add() // 1
+add() // 2
+add() // 3
+// 上面代码中，num是函数addNum的内部变量。通过闭包，start的状态被保留了，每一次调用都是在上一次调用的基础上进行计算。从中可以看到，闭包add使得函数addNum的内部环境，一直存在。所以，闭包可以看作是函数内部作用域的一个接口
+</code></pre>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -189,294 +275,55 @@
 		</ul>
 	</div>
 
-          
+      
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/12/30/function/" class="archive-article-date">
-  	<time datetime="2017-12-30T06:29:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-30</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2017/12/30/function/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">My-JS之函数</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/12/30/function/">My-JS之函数</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">前端</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/12/30/execution-context/" class="archive-article-date">
-  	<time datetime="2017-12-30T06:27:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/12/30/execution-context/">My-JS之执行上下文</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">前端</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/12/30/scope/" class="archive-article-date">
-  	<time datetime="2017-12-30T06:25:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/12/30/scope/">My-JS之作用域</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">前端</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/12/29/type-conversion/" class="archive-article-date">
-  	<time datetime="2017-12-29T13:12:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-29</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/12/29/type-conversion/">My-JS之类型转换</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/12/29/type-detection/" class="archive-article-date">
-  	<time datetime="2017-12-29T13:10:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-29</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/12/29/type-detection/">My-JS之类型检测</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">前端</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/12/29/variable/" class="archive-article-date">
-  	<time datetime="2017-12-29T12:57:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-29</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/12/29/variable/">My-JS之变量</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">前端</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/12/29/hello-world/" class="archive-article-date">
-  	<time datetime="2017-12-29T08:48:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-29</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/12/29/hello-world/">Hello World</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">hello world</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -500,8 +347,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
