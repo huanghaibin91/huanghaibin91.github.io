@@ -6,17 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://huanghaibin91.github.io">
-  <title>Archives: 2017 | HHB&#39;s BLOG</title>
+  <title>My-JS之异步模式 | HHB&#39;s BLOG</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="huanghaibin91 的博客">
-<meta property="og:type" content="website">
-<meta property="og:title" content="HHB&#39;s BLOG">
-<meta property="og:url" content="https://huanghaibin91.github.io/archives/2017/index.html">
+  <meta name="description" content="JS是单线程的（所谓单线程，是指在JS引擎中负责解释和执行JavaScript代码的线程只有一个，叫主线程），就是说JS同一时间只能处理一件事。那么就可能出现这种情况：一件事需要花费很长时间处理，后面的事情只能等待，体验就非常差。 所以JS中将执行的任务分为两类：同步任务和异步任务。 同步任务，同步任务指的是，发出调用立即获得结果的为同步任务。同步任务会在调用之后一直等待，直到返回结果。 异步任务">
+<meta name="keywords" content="前端,JavaScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="My-JS之异步模式">
+<meta property="og:url" content="https://huanghaibin91.github.io/2017/12/31/asynchronous/index.html">
 <meta property="og:site_name" content="HHB&#39;s BLOG">
-<meta property="og:description" content="huanghaibin91 的博客">
+<meta property="og:description" content="JS是单线程的（所谓单线程，是指在JS引擎中负责解释和执行JavaScript代码的线程只有一个，叫主线程），就是说JS同一时间只能处理一件事。那么就可能出现这种情况：一件事需要花费很长时间处理，后面的事情只能等待，体验就非常差。 所以JS中将执行的任务分为两类：同步任务和异步任务。 同步任务，同步任务指的是，发出调用立即获得结果的为同步任务。同步任务会在调用之后一直等待，直到返回结果。 异步任务">
+<meta property="og:updated_time" content="2017-12-31T08:46:07.064Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="HHB&#39;s BLOG">
-<meta name="twitter:description" content="huanghaibin91 的博客">
+<meta name="twitter:title" content="My-JS之异步模式">
+<meta name="twitter:description" content="JS是单线程的（所谓单线程，是指在JS引擎中负责解释和执行JavaScript代码的线程只有一个，叫主线程），就是说JS同一时间只能处理一件事。那么就可能出现这种情况：一件事需要花费很长时间处理，后面的事情只能等待，体验就非常差。 所以JS中将执行的任务分为两类：同步任务和异步任务。 同步任务，同步任务指的是，发出调用立即获得结果的为同步任务。同步任务会在调用之后一直等待，直到返回结果。 异步任务">
   
     <link rel="alternative" href="/atom.xml" title="HHB&#39;s BLOG" type="application/atom+xml">
   
@@ -144,36 +146,74 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-asynchronous" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      My-JS之异步模式
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/12/31/asynchronous/" class="archive-article-date">
+
+        
+        <a href="/2017/12/31/asynchronous/" class="archive-article-date">
   	<time datetime="2017-12-31T08:45:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-31</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/12/31/asynchronous/">My-JS之异步模式</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>JS是单线程的（所谓单线程，是指在JS引擎中负责解释和执行JavaScript代码的线程只有一个，叫<strong>主线程</strong>），就是说JS同一时间只能处理一件事。那么就可能出现这种情况：一件事需要花费很长时间处理，后面的事情只能等待，体验就非常差。</p>
+<p>所以JS中将执行的任务分为两类：同步任务和异步任务。</p>
+<p>同步任务，同步任务指的是，发出调用立即获得结果的为同步任务。同步任务会在调用之后一直等待，直到返回结果。</p>
+<p>异步任务，异步任务指的是，发出调用，但无法立即获得结果，需要额外的操作才能得到预期的结果的为异步任务。调用之后和拿到结果之间，可以进行其他操作。</p>
+<a id="more"></a>
+<p><strong>JS运行环境运行机制</strong></p>
+<ol>
+<li>所有同步任务都在主线程上执行，形成一个执行栈；</li>
+<li>主线程之外，还存在一个任务队列（一个先进先出的队列，里面放着各种事件）。只要异步任务有了运行结果，就在任务队列之中放置一个事件；</li>
+<li>一旦执行栈中的所有同步任务执行完毕，系统就会读取任务队列，看看里面有哪些事件。那些对应的异步任务，于是结束等待状态，进入执行栈，开始执行；</li>
+<li>主线程不断重复上面的第三步；</li>
+</ol>
+<p>所以<strong>执行栈中的代码（同步任务），总是在读取任务队列（异步任务）之前执行</strong></p>
+<p><strong>事件和回调函数</strong></p>
+<p>事件，所谓的事件驱动就是将一切抽象为事件。I/O操作完成是一个事件，用户点击是一个事件，Ajax完成是一个事件，一个图片加载完成是一个事件，当产生事件后，这个事件会被放入任务队列中等待被处理。</p>
+<p>回调函数，与事件关联的函数，会在执行事件时调用。</p>
+<pre><code>setTimeout(fn, 1000); // 例如setTimeout时间到了就会对应一个事件，而fn就是事件执行时调用的回调函数
+</code></pre><p><strong>事件循环（event loop）</strong></p>
+<p>主线程只会做一件事情，就是从任务队列里面取事件、执行事件，再取事件、再执行。当任务队列为空时，就会等待直到任务队列变成非空。而且主线程只有在将当前的事件执行完成后，才会去取下一个事件。这种机制就叫做事件循环机制，取一个消息并执行的过程叫做一次循环。</p>
+<pre><code>setTimeout(function () {
+    console.log(1);
+}, 0);
+console.log(2);
 
-        <div class="article-info info-on-right">
-          
+// 2
+// 1
+
+// setTimeout(..) 并不是直接把回调函数挂在任务队列中。它所做的是设定一个定时器。当定时器到时后，相当于产生了一个时间到了的事件，这个事件进入任务队列。这样，下个事件循环主线程会取出并执行这个事件的回调函数
+// 因为主线程会先执行完执行栈中的同步任务，才会去任务队列提取事件，所以异步任务的回调函数总是在同步任务知乎执行
+// 但如果任务队列中已经有多个事件排队，那么就会导致setTimeOut的函数延后运行，这就是为什么setTimeOut和setInterval不准确的原因
+
+
+for (var i = 0; i &lt; 5; i++) {
+    setTimeout(function() {
+        console.log(new Date());
+    }, 1000);
+}
+console.log(new Date());
+
+// 先输出一个日期，一秒后再几乎同时输出五个日期，但可以看出五个日期有细微的差别，这些误差就是因为任务队列中有多个事件排队导致后边事件延迟的结果
+</code></pre>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -189,385 +229,54 @@
 		</ul>
 	</div>
 
-          
+      
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/12/31/prototype/" class="archive-article-date">
-  	<time datetime="2017-12-31T08:43:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-31</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2017/12/31/prototype/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">My-JS只原型</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/12/31/prototype/">My-JS只原型</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">前端</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/12/31/class/" class="archive-article-date">
-  	<time datetime="2017-12-31T08:41:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-31</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/12/31/class/">My-JS之类</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">前端</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/12/31/this/" class="archive-article-date">
-  	<time datetime="2017-12-31T08:39:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-31</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/12/31/this/">My-JS之this</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">前端</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/12/31/module/" class="archive-article-date">
-  	<time datetime="2017-12-31T08:37:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-31</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/12/31/module/">My-JS之模块</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">前端</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/12/30/closure/" class="archive-article-date">
-  	<time datetime="2017-12-30T06:36:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/12/30/closure/">My-JS之闭包</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">前端</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/12/30/function/" class="archive-article-date">
-  	<time datetime="2017-12-30T06:29:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/12/30/function/">My-JS之函数</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">前端</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/12/30/execution-context/" class="archive-article-date">
-  	<time datetime="2017-12-30T06:27:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/12/30/execution-context/">My-JS之执行上下文</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">前端</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/12/30/scope/" class="archive-article-date">
-  	<time datetime="2017-12-30T06:25:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/12/30/scope/">My-JS之作用域</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">前端</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/12/29/type-conversion/" class="archive-article-date">
-  	<time datetime="2017-12-29T13:12:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-29</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/12/29/type-conversion/">My-JS之类型转换</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/2017/page/2/">2</a><a class="extend next" rel="next" href="/archives/2017/page/2/">Next &raquo;</a>
-    </nav>
   
 
 
@@ -592,8 +301,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

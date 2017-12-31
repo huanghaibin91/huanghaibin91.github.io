@@ -6,17 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://huanghaibin91.github.io">
-  <title>Archives: 2017 | HHB&#39;s BLOG</title>
+  <title>My-JS之this | HHB&#39;s BLOG</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="huanghaibin91 的博客">
-<meta property="og:type" content="website">
-<meta property="og:title" content="HHB&#39;s BLOG">
-<meta property="og:url" content="https://huanghaibin91.github.io/archives/2017/index.html">
+  <meta name="description" content="this引用的是函数据以执行的环境对象。虽然函数的作用域是在声明时决定的，但是this实际上是在函数被调用时发生的绑定，它指向什么完全取决于函数在哪里被调用，所以this的指向是可变的。 this是函数的内部属性，所以this的使用环境是在函数中。 this的指向是一个对象。">
+<meta name="keywords" content="前端,JavaScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="My-JS之this">
+<meta property="og:url" content="https://huanghaibin91.github.io/2017/12/31/this/index.html">
 <meta property="og:site_name" content="HHB&#39;s BLOG">
-<meta property="og:description" content="huanghaibin91 的博客">
+<meta property="og:description" content="this引用的是函数据以执行的环境对象。虽然函数的作用域是在声明时决定的，但是this实际上是在函数被调用时发生的绑定，它指向什么完全取决于函数在哪里被调用，所以this的指向是可变的。 this是函数的内部属性，所以this的使用环境是在函数中。 this的指向是一个对象。">
+<meta property="og:updated_time" content="2017-12-31T08:40:55.955Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="HHB&#39;s BLOG">
-<meta name="twitter:description" content="huanghaibin91 的博客">
+<meta name="twitter:title" content="My-JS之this">
+<meta name="twitter:description" content="this引用的是函数据以执行的环境对象。虽然函数的作用域是在声明时决定的，但是this实际上是在函数被调用时发生的绑定，它指向什么完全取决于函数在哪里被调用，所以this的指向是可变的。 this是函数的内部属性，所以this的使用环境是在函数中。 this的指向是一个对象。">
   
     <link rel="alternative" href="/atom.xml" title="HHB&#39;s BLOG" type="application/atom+xml">
   
@@ -144,162 +146,116 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-this" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/12/31/asynchronous/" class="archive-article-date">
-  	<time datetime="2017-12-31T08:45:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-31</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/12/31/asynchronous/">My-JS之异步模式</a>
+    <h1 class="article-title" itemprop="name">
+      My-JS之this
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">前端</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/12/31/prototype/" class="archive-article-date">
-  	<time datetime="2017-12-31T08:43:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-31</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/12/31/prototype/">My-JS只原型</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">前端</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/12/31/class/" class="archive-article-date">
-  	<time datetime="2017-12-31T08:41:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-31</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/12/31/class/">My-JS之类</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">前端</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/12/31/this/" class="archive-article-date">
+        
+        <a href="/2017/12/31/this/" class="archive-article-date">
   	<time datetime="2017-12-31T08:39:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-31</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/12/31/this/">My-JS之this</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>this引用的是函数据以执行的环境对象。虽然函数的作用域是在声明时决定的，但是this实际上是在函数被调用时发生的绑定，它指向什么完全取决于函数在哪里被调用，所以this的指向是可变的。</p>
+<p>this是函数的内部属性，所以this的使用环境是在函数中。</p>
+<p>this的指向是一个对象。</p>
+<a id="more"></a>
+<p><strong>this绑定规则</strong></p>
+<p>判断函数中this绑定的对象规则：</p>
+<ol>
+<li>函数是否在new中调用（new 绑定）？如果是的话this绑定的是新创建的对象；</li>
+<li>函数是否通过call、apply（显式绑定）或者硬绑定调用？ 如果是的话，this绑定的是指定的对象；</li>
+<li>函数是否在某个上下文对象中调用（也就是函数作为某个对象的方法调用）（隐式绑定）？如果是的话，this绑定的是那个上下文对象；</li>
+<li>如果都不是的话， 使用默认绑定。如果在严格模式下，就绑定到undefined，否则绑定到全局对象；</li>
+</ol>
+<p>从上至下逐条判断，就能正确判断this的指向。</p>
+<ul>
+<li><p>new 绑定，构造函数生成实例中调用；</p>
+<pre><code>function F() {
+    this.a = 1;
+    this.sayA = function () {
+        console.log(this.a);
+    }
+}
+var f = new F();
+f.sayA(); // 1
+</code></pre></li>
+<li><p>call、apply调用（显式绑定）；</p>
+<ul>
+<li><p>call、apply接收两个参数，第一个是参数是对象，函数this就会指向这个对象，如果你传入了一个原始值（字符串类型、布尔类型或者数字类型）来当作 this 的绑定对象，这个原始值会被转换成它的对象形式（也就是 new String(..)、new Boolean(..)或者new Number(..)）；第二个参数是函数调用的；</p>
+<pre><code>var a = 1;
+var obj = {
+    a: 2
+};
+function f() {
+    console.log(this.a);
+}
+f(); // 1
+f.call(obj); // 2，硬性将f的this绑定到指定对象
+f.apply(obj); // 2
+</code></pre></li>
+<li><p>bind，bind的作用与call、apply一样，都是为函数指定执行环境对象，但是bind返回的是一个新函数，而call和apply会直接执行返回结果；</p>
+<pre><code>var a = 1;
+var obj = {
+    a: 2
+};
+function f() {
+    console.log(this.a);
+}
+f(); // 1
+var f2 = f.bind(obj); // 返回的是一个新函数，所以可以将函数保存至变量，方便以后调用
+f2(); // 2
+</code></pre></li>
+<li><p>如果你把null或者undefined作为 this 的绑定对象传入call、apply或者bind，这些值在调用时会被忽略，实际应用的是默认绑定规则；</p>
+</li>
+</ul>
+</li>
+<li><p>作为对象方法调用（隐式绑定）；</p>
+<pre><code>var a = 1;
+function f() {
+    console.log(this.a);
+}
+var obj = {
+    a: 2,
+    f: f // 将对象的方法指向函数
+};
+obj.f(); // 2，当函数作为对象方法时，this就指向当前对象
 
-        <div class="article-info info-on-right">
-          
+var f2 = obj.f;
+f2(); //1，相当于直接调用f，所以this指向全局对象
+
+var obj2 = {
+    a: 3,
+    f: obj.f
+};
+obj2.f(); // 3，作为对象方法调用
+</code></pre></li>
+<li><p>默认函数调用，函数独立调用；</p>
+<pre><code>var a = 1; // 全局变量会成为全局对象的属性，所以当this指向全局对象时能够访问
+function f() {
+    console.log(this.a);
+}
+f(); // 1，普通的函数调用，this指向全局对象
+</code></pre></li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -315,259 +271,63 @@
 		</ul>
 	</div>
 
-          
+      
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/12/31/module/" class="archive-article-date">
-  	<time datetime="2017-12-31T08:37:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-31</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2017/12/31/class/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          My-JS之类
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/12/31/module/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">My-JS之模块</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/12/31/module/">My-JS之模块</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">前端</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/12/30/closure/" class="archive-article-date">
-  	<time datetime="2017-12-30T06:36:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/12/30/closure/">My-JS之闭包</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">前端</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/12/30/function/" class="archive-article-date">
-  	<time datetime="2017-12-30T06:29:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/12/30/function/">My-JS之函数</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">前端</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/12/30/execution-context/" class="archive-article-date">
-  	<time datetime="2017-12-30T06:27:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/12/30/execution-context/">My-JS之执行上下文</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">前端</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/12/30/scope/" class="archive-article-date">
-  	<time datetime="2017-12-30T06:25:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/12/30/scope/">My-JS之作用域</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">前端</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/12/29/type-conversion/" class="archive-article-date">
-  	<time datetime="2017-12-29T13:12:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-29</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/12/29/type-conversion/">My-JS之类型转换</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/2017/page/2/">2</a><a class="extend next" rel="next" href="/archives/2017/page/2/">Next &raquo;</a>
-    </nav>
   
 
 
@@ -592,8 +352,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
