@@ -15,7 +15,7 @@
 <meta property="og:url" content="https://huanghaibin91.github.io/2018/01/02/cross-domain/index.html">
 <meta property="og:site_name" content="HHB&#39;s BLOG">
 <meta property="og:description" content="浏览器为了安全，不允许从其他域调用对象，这被成为“同源政策”，同源是指：协议相同、域名相同和端口相同。 同源政策会在跨域时限制一些操作，其限制之一是不能通过ajax的方法去请求不同源中的文档，第二个限制是浏览器中不同域的框架之间是不能进行js的交互操作的，具体表现在三个方面：  Cookie、LocalStorage和 IndexedDB无法读取；  DOM无法获得；  AJAX请求无效（可以发送">
-<meta property="og:updated_time" content="2018-01-02T12:46:38.108Z">
+<meta property="og:updated_time" content="2018-01-02T12:51:58.012Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="My-JS之跨域">
 <meta name="twitter:description" content="浏览器为了安全，不允许从其他域调用对象，这被成为“同源政策”，同源是指：协议相同、域名相同和端口相同。 同源政策会在跨域时限制一些操作，其限制之一是不能通过ajax的方法去请求不同源中的文档，第二个限制是浏览器中不同域的框架之间是不能进行js的交互操作的，具体表现在三个方面：  Cookie、LocalStorage和 IndexedDB无法读取；  DOM无法获得；  AJAX请求无效（可以发送">
@@ -281,10 +281,10 @@ window.addEventListener(&apos;message&apos;, function(e) {
     localStorage.setItem(messgae.key, message.data.message);
 },false);
 </code></pre><p><strong>JSONP</strong></p>
-<p>我们可以看到使用script标签加载外部文件是可以跨域的（不仅如此，我们还发现凡有”src”这个属性的标签都拥有跨域的能力，比如<script>、<img>、<iframe>）。</p>
+<p>我们可以看到使用script标签加载外部文件是可以跨域的（不仅如此，我们还发现凡有”src”这个属性的标签都拥有跨域的能力，比如<code>&lt;script&gt;、&lt;img&gt;、&lt;iframe&gt;</code>）。</p>
 <p>JSONP，便是利用script的这个特性，该协议的一个要点就是允许用户传递一个callback参数给服务端，然后服务端返回数据时会将这个callback参数作为函数名来包裹住JSON数据，这样客户端就可以随意定制自己的函数来自动处理返回数据。</p>
 <p>注意，JSONP的回调函数必须在window下添加。</p>
-<p>这里是我封装的一个元素JS JSONP函数，<a href="https://github.com/huanghaibin91/JS-CSS-Fragment/blob/master/JS/jsonp.js">JS jsonp函数</a>。</p>
+<p>这里是我封装的一个元素JS JSONP函数，<a href="https://github.com/huanghaibin91/JS-CSS-Fragment/blob/master/JS/jsonp.js" target="_blank" rel="external">JS jsonp函数</a>。</p>
 <p>JSONP主要是用于解决Ajax跨域请求无效的情景。JSONP只能支持GET操作。</p>
 <p><strong>CORS</strong></p>
 <p>CORS，跨域资源共享，允许浏览器向跨源服务器，发出XMLHttpRequest请求，从而克服了AJAX只能同源使用的限制。CORS需要浏览器和服务器同时支持。目前，所有浏览器都支持该功能，IE浏览器不能低于IE10。CORS通信与同源的AJAX通信没有差别，代码完全一样。<strong>因此，实现CORS通信的关键是服务器。只要服务器实现了CORS接口，就可以跨源通信。</strong>服务器端对于CORS的支持，主要就是通过设置Access-<code>Control-Allow-Origin</code>来进行的。如果浏览器检测到相应的设置，就可以允许Ajax进行跨域的访问。</p>
@@ -294,7 +294,7 @@ window.addEventListener(&apos;message&apos;, function(e) {
 <li>通过搭建中间转发层；</li>
 <li>Nginx反向代理；</li>
 </ul>
-</script></p>
+
       
 
       
