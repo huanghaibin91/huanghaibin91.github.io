@@ -6,19 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://huanghaibin91.github.io">
-  <title>My-JS之变量 | HHB&#39;s BLOG</title>
+  <title>My-JS之跨域 | HHB&#39;s BLOG</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="变量是存储信息的容器，在JS中，变量是松散类型的，所以JS中的变量可以用来保存任何类型的数据。所以变量是没有类型的，值才有。 变量标识符 标识符是指变量、函数和属性的名字，或者函数的参数，标识符需要满足一下条件：">
+  <meta name="description" content="浏览器为了安全，不允许从其他域调用对象，这被成为“同源政策”，同源是指：协议相同、域名相同和端口相同。 同源政策会在跨域时限制一些操作，其限制之一是不能通过ajax的方法去请求不同源中的文档，第二个限制是浏览器中不同域的框架之间是不能进行js的交互操作的，具体表现在三个方面：  Cookie、LocalStorage和 IndexedDB无法读取；  DOM无法获得；  AJAX请求无效（可以发送">
 <meta name="keywords" content="前端,JavaScript">
 <meta property="og:type" content="article">
-<meta property="og:title" content="My-JS之变量">
-<meta property="og:url" content="https://huanghaibin91.github.io/2017/12/29/variable/index.html">
+<meta property="og:title" content="My-JS之跨域">
+<meta property="og:url" content="https://huanghaibin91.github.io/2018/01/02/cross-domain/index.html">
 <meta property="og:site_name" content="HHB&#39;s BLOG">
-<meta property="og:description" content="变量是存储信息的容器，在JS中，变量是松散类型的，所以JS中的变量可以用来保存任何类型的数据。所以变量是没有类型的，值才有。 变量标识符 标识符是指变量、函数和属性的名字，或者函数的参数，标识符需要满足一下条件：">
-<meta property="og:updated_time" content="2017-12-29T13:38:54.365Z">
+<meta property="og:description" content="浏览器为了安全，不允许从其他域调用对象，这被成为“同源政策”，同源是指：协议相同、域名相同和端口相同。 同源政策会在跨域时限制一些操作，其限制之一是不能通过ajax的方法去请求不同源中的文档，第二个限制是浏览器中不同域的框架之间是不能进行js的交互操作的，具体表现在三个方面：  Cookie、LocalStorage和 IndexedDB无法读取；  DOM无法获得；  AJAX请求无效（可以发送">
+<meta property="og:updated_time" content="2018-01-02T11:41:49.928Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="My-JS之变量">
-<meta name="twitter:description" content="变量是存储信息的容器，在JS中，变量是松散类型的，所以JS中的变量可以用来保存任何类型的数据。所以变量是没有类型的，值才有。 变量标识符 标识符是指变量、函数和属性的名字，或者函数的参数，标识符需要满足一下条件：">
+<meta name="twitter:title" content="My-JS之跨域">
+<meta name="twitter:description" content="浏览器为了安全，不允许从其他域调用对象，这被成为“同源政策”，同源是指：协议相同、域名相同和端口相同。 同源政策会在跨域时限制一些操作，其限制之一是不能通过ajax的方法去请求不同源中的文档，第二个限制是浏览器中不同域的框架之间是不能进行js的交互操作的，具体表现在三个方面：  Cookie、LocalStorage和 IndexedDB无法读取；  DOM无法获得；  AJAX请求无效（可以发送">
   
     <link rel="alternative" href="/atom.xml" title="HHB&#39;s BLOG" type="application/atom+xml">
   
@@ -146,79 +146,167 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-variable" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-cross-domain" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      My-JS之变量
+      My-JS之跨域
     </h1>
   
 
         
-        <a href="/2017/12/29/variable/" class="archive-article-date">
-  	<time datetime="2017-12-29T12:57:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-29</time>
+        <a href="/2018/01/02/cross-domain/" class="archive-article-date">
+  	<time datetime="2018-01-02T11:40:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-02</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>变量是存储信息的容器，在JS中，变量是松散类型的，所以JS中的变量可以用来保存任何类型的数据。所以变量是没有类型的，值才有。</p>
-<p><strong>变量标识符</strong></p>
-<p>标识符是指变量、函数和属性的名字，或者函数的参数，标识符需要满足一下条件：</p>
+        <p>浏览器为了安全，不允许从其他域调用对象，这被成为“同源政策”，同源是指：协议相同、域名相同和端口相同。</p>
+<p>同源政策会在跨域时限制一些操作，其限制之一是不能通过ajax的方法去请求不同源中的文档，第二个限制是浏览器中不同域的框架之间是不能进行js的交互操作的，具体表现在三个方面：</p>
+<ul>
+<li><p>Cookie、LocalStorage和 IndexedDB无法读取；</p>
+</li>
+<li><p>DOM无法获得；</p>
+</li>
+<li><p>AJAX请求无效（可以发送，但浏览器会拒绝接受响应）。</p>
+</li>
+</ul>
+<p>但有的时候，我们仍是需要进行跨域操作。</p>
 <a id="more"></a>
-<ul>
-<li>第一个字符必须是一个字母字符、下划线<code>_</code>或一个美元符号<code>$</code>；</li>
-<li>其他字符可以是字母、下划线、美元符号或数字；</li>
-<li><p>JS中有一组具有特殊用途的关键字，这些关键字可用于表示控制语句的开始或结束，或者用于执行特定操作，这些关键字不可用于标识符；另外还有一组可能将来被用作关键字的保留字，最好也不要用保留字作为标识符；</p>
-<pre><code>var case = 1; // 报错，case为关键字
-var char = 2; // 未报错，但char为保留字，建议不要用于标识符
+<p><strong>document.domain跨域</strong></p>
+<p>通过document.domain跨域只适用于不同子域的跨域情景</p>
+<pre><code>// 下面两个子域不同
+http://a.example.com/a.html
+http://b.example.com/b.html
+</code></pre><ul>
+<li><p>通过document.domain跨域访问cookie；   </p>
+<pre><code>// http://a.example.com/a.html 网页中嵌套iframe页面，地址为http://b.example.com/b.html
+// 设置网址的document.domain，注意：document.domain的设置是有限制的，我们只能把document.domain设置成自身或更高一级的父域，且主域必须相同
+// 设置父窗口和子窗口的domain相同
+document.domain = &apos;example.com&apos;;
+
+// 父窗口http://a.example.com/a.html设置cookie
+document.cookie = &quot;a=a&quot;;
+
+// 子窗口http://b.example.com/b.html将可以读取这个cookie
+console.log(document.cookie);
+</code></pre></li>
+<li><p>通过document.domain + iframe可以跨域操作DOM；</p>
+<pre><code>// http://a.example.com/a.html 网页中嵌套iframe页面，地址为http://b.example.com/b.html
+// 设置父窗口和子窗口的domain相同
+document.domain = &apos;example.com&apos;;
+
+// 父窗口
+document.getElementById(&apos;my-iframe&apos;).contentWindow.document; // 可以跨域获取iframe里的document对象
 </code></pre></li>
 </ul>
-<p><strong>定义变量</strong></p>
-<p>在JS中变量的定义会被分为两步，变量声明和变量赋值。</p>
-<pre><code>var a = 1; // 声明变量并赋值
+<p><strong>window.name跨域</strong></p>
+<p>window对象有个name属性，该属性有个特征：即在一个窗口(window)的生命周期内,窗口载入的所有的页面都是共享一个window.name的，每个页面对window.name都有读写的权限，window.name是持久存在一个窗口载入过的所有页面中的，并不会因新页面的载入而进行重置。window.name是string类型。<strong>window.name属性的神奇之处在于name 值在不同的页面（甚至不同域名）加载后依旧存在（如果没修改则值不会变化），并且可以支持非常长的 name 值（2MB</strong>）</p>
+<pre><code>// 假设我们有3个页面
+// a.com/index.html
+// a.com/empty.html
+// b.com/index.html
 
-// 上面可以拆分为两步
-var a; // 变量声明
-a = 1; // 变量赋值
+// 1. 在a.com/index.html页面中嵌入一个iframe，设置src为b.com/index.html
+// 2. b.com/index.html载入后，设置window.name，然后再使用location.href=&apos;a.com/empty.html&apos;跳转到父窗口页面同域的页面中，必须设置这一步，借用同域向父窗口传递信息
+// 3. 在a.com/index.html页面中，就可以通过document.getElementById(&apos;my-iframe&apos;).contentWindow.name来获取iframe内页面a.com/empty.html的window.name值了，而这个值正是b.com/index.html设置的
 
-var b; // 声明变量未赋值，变量值为undefined
-</code></pre><p>上面的代码我们使用了<code>var</code>操作符定义变量，变量将会作为变量所在作用域中的局部变量。如果在函数中使用var定义一个变量，那么这个变量在函数退出后将会被销毁。</p>
-<p>如果未用<code>var</code>操作符而直接对变量进行赋值，变量将会自动声明成为全局变量，在浏览器中全局变量会作为window对象的属性。</p>
-<pre><code>a = 1; // 未使用var
-window.a // 1
-</code></pre><p>在变量声明之后再声明同名变量</p>
-<pre><code>var a = 1; 
-a // 1
-var a = 2; // 再次声明赋值同名变量，变量声明已经有同名的，所以重复的var声明被忽略，但赋值不会，所以a被赋新值2
-a //  2
-var a; // 再次声明同名变量，变量声明已经有同名的，所以重复的var声明被忽略，这条语句无效
-a // 2
-</code></pre><p><strong>变量值的类型</strong></p>
-<p>JS变量仅仅是一个保存值的占位符而已，所以变量的值可以是任何类型的数据。</p>
-<p>在JS中数据有七种内置类型：空值（ null）、未定义（ undefined）、布尔值（ boolean）、数字（ number）、字符串（ string）、对象（ object）、符号（ symbol， ES6 中新增）。null，表示一个空对象指针，用于将来保存对象但还没有真正保存对象时，变量初始化的值；undefined，表示变量已声明但未初始化赋值；Boolean，布尔类型，布尔（逻辑）只能有两个值：true 或 false；string，字符串是储存字符的变量；number，数字类型；object，对象是一组数据和功能的集合。</p>
-<pre><code>var a = 1; // 变量值可以是基本类型
-a = function () { console.log(2) }; // 修改变量的值为一个函数
-</code></pre><p>变量值还有另一种类型区分方式，分为基本类型值（如undefined、null、boolean、number、string）和引用类型值（如object）。</p>
+// 注意： 实际操作中，我们一般使用一个隐藏的iframe，然后监听它第二次onload事件，就知道该iframe已经跳到同域页面了
+</code></pre><p><strong>location.hash跨域</strong></p>
+<p>location.hash可以解决页面与页面中iframe间通信。</p>
+<p>location.hash就是URL的#号后面的部分，比如<code>http://a.example.com/a.html#fragment</code>的<code>#fragment</code>。如果只是改变location.hash，这部分的修改不会产生HTTP请求所以页面不会重新刷新，但是会产生浏览器历史记录。</p>
+<pre><code>// http://a.example.com/a.html 网页中嵌套iframe页面，地址为http://b.example.com/b.html
+
+// 父窗口向子窗口传递信息
+// 父窗口代码
+var data = &apos;hello world&apos;;
+var url = &apos;http://b.example.com/b.html&apos;;
+var src = url + &apos;#&apos; + data; // data便是要传递的数据
+document.getElementById(&apos;my-iframe&apos;).src = src;
+
+// 子窗口代码，子窗口通过监听hashchange事件得到通知
+window.onhashchange = function () {
+    console.log(window.location.hash); // &apos;hello world&apos;，数据到达子窗口
+}
+
+// 子窗口向父窗口传递消息
+// 在子窗口中再创建一个隐藏的子iframe，此iframe的链接与父窗口同域
+try {  
+    parent.location.hash = &apos;data&apos;;  
+} catch (e) {  
+    var url = &apos;ttp://a.example.com/proxy.html&apos;;
+    var data = &apos;hello world&apos;; 
+    // ie、chrome的安全机制无法修改parent.location.hash，创建一个代理iframe
+    var ifrproxy = document.createElement(&apos;iframe&apos;);  
+    ifrproxy.style.display = &apos;none&apos;;  
+    ifrproxy.src = url + &apos;#&apos; + data
+    document.body.appendChild(ifrproxy);  
+}
+
+// 代理proxy.html监听到url发生变化，修改a.html的url（因为a.html和proxy.html同域，所以proxy.html可修改a.html的url hash）
+
+// a.html监听到URL发生变化，触发相应操作
+</code></pre><p><strong>H5跨文档通信 postMessage</strong></p>
+<p>window.postMessage()方法实现页面与页面中iframe或通过window.open()方法打开的页面之间的通信。（IE8+）</p>
+<p>window.postMessage()方法的第一个参数是具体的信息内容，第二个参数是接收消息的窗口的源（origin）即“协议 + 域名 + 端口”。也可以设为*，表示不限制域名，向所有窗口发送。</p>
+<pre><code>// http://a.example.com/a.html 网页中嵌套iframe页面，地址为http://b.example.com/b.html
+// 那么父窗口想向子窗口传递信息，父窗口代码：
+var iframeWindow = document.getElementById(&apos;my-iframe&apos;).contentWindow;
+iframeWindow.postMessage(&apos;hello world&apos;, &apos;http://b.example.com/b.html&apos;);
+
+// 父窗口发送消息后，iframe窗口通过message事件接收，message事件为异步触发，子窗口代码：
+window.addEventListener(&apos;message&apos;, function(e) {
+      console.log(e.data); // &apos;hello world&apos;，postMessage第一个参数的数据
+    console.log(e.origin); // &apos;http://a.example.com/a.html&apos;，发送消息的文档所在的域
+    console.log(e.source); // 发送消息的文档的window对象的代理，这里指向父窗口的window，可以利用此属性向来源窗口发送回执
+    e.source.postMessage(&apos;hello world, too&apos;, &apos;http://a.example.com/a.html&apos;);
+},false);
+</code></pre><p>还可以通过postMessage读取其他窗口的LocalStorage。</p>
+<pre><code>// http://a.example.com/a.html 网页中嵌套iframe页面，地址为http://b.example.com/b.html
+// 那么父窗口想向子窗口传递信息，并将消息存在子窗口的localStorage中，父窗口代码：
+var iframeWindow = document.getElementById(&apos;my-iframe&apos;).contentWindow;
+var obj = { message: &apos;hello world&apos; };
+// 将要传递的信息对象转化为字符串方便传输
+iframeWindow.postMessage(JSON.stringify({key: &apos;storage&apos;, data: obj}), &apos;http://b.example.com/b.html&apos;);
+
+// 父窗口发送消息后，iframe窗口通过message事件接收并存储，子窗口代码：
+window.addEventListener(&apos;message&apos;, function(e) {
+      var message = JSON.parse(e.data);
+    // 通过传递的消息可以修改添加删除子窗口的localStorage
+    localStorage.setItem(messgae.key, message.data.message);
+},false);
+</code></pre><p><strong>JSONP</strong></p>
+<p>我们可以看到使用script标签加载外部文件是可以跨域的（不仅如此，我们还发现凡有”src”这个属性的标签都拥有跨域的能力，比如<script>、<img>、<iframe>）。</p>
+<p>JSONP，便是利用script的这个特性，该协议的一个要点就是允许用户传递一个callback参数给服务端，然后服务端返回数据时会将这个callback参数作为函数名来包裹住JSON数据，这样客户端就可以随意定制自己的函数来自动处理返回数据。</p>
+<p>注意，JSONP的回调函数必须在window下添加。</p>
+<p>这里是我封装的一个元素JS JSONP函数，<a href="https://github.com/huanghaibin91/JS-CSS-Fragment/blob/master/JS/jsonp.js">JS jsonp函数</a>。</p>
+<p>JSONP主要是用于解决Ajax跨域请求无效的情景。JSONP只能支持GET操作。</p>
+<p><strong>CORS</strong></p>
+<p>CORS，跨域资源共享，允许浏览器向跨源服务器，发出XMLHttpRequest请求，从而克服了AJAX只能同源使用的限制。CORS需要浏览器和服务器同时支持。目前，所有浏览器都支持该功能，IE浏览器不能低于IE10。CORS通信与同源的AJAX通信没有差别，代码完全一样。<strong>因此，实现CORS通信的关键是服务器。只要服务器实现了CORS接口，就可以跨源通信。</strong>服务器端对于CORS的支持，主要就是通过设置Access-<code>Control-Allow-Origin</code>来进行的。如果浏览器检测到相应的设置，就可以允许Ajax进行跨域的访问。</p>
+<p>CORS，主要是用于解决Ajax跨域请求无效的情景。与CORS请求相关的头信息：</p>
 <ul>
-<li><p>基本类型值，保存在栈内存，这种值完全保存在内存的一个位置；</p>
-<pre><code>var a = 1;
-var b = a;
-b = 2;
-a // 1，基本类型值通过值复制传递，两个值之间相互独立，不会互相影响
-</code></pre></li>
-<li><p>引用类型值，保存在堆内存，变量保存的实际上只是一个指针，这个指针指向内存中的一个位置，该位置保存对象；</p>
-<pre><code>var a = [1];
-var b = a;
-b.push(2);
-a // [1, 2]，引用类型通过引用复制传递，两个变量指向同一个对象，会相互影响
+<li><code>Access-Control-Allow-Origin</code>，该字段是必须的。它的值要么是请求时Origin字段的值，要么是一个*，表示接受任意域名的请求</li>
+<li><p><code>Access-Control-Allow-Credentials</code>，该字段可选。它的值是一个布尔值，表示是否允许发送Cookie，默认为false</p>
+<pre><code>// 客户端设置
+var xhr = new XMLHttpRequest();
+xhr.withCredentials = true;
 </code></pre></li>
 </ul>
-
+<p>如果要发送Cookie，Access-Control-Allow-Origin就不能设为星号，必须指定明确的、与请求网页一致的域名。同时，Cookie依然遵循同源政策，只有用服务器域名设置的Cookie才会上传，其他域名的Cookie并不会上传，且（跨源）原网页代码中的document.cookie也无法读取服务器域名下的Cookie。</p>
+<ul>
+<li><code>Access-Control-Expose-Headers</code>，该字段可选。CORS请求时，XMLHttpRequest对象的getResponseHeader()方法只能拿到6个基本字段：Cache-Control、Content-Language、Content-Type、Expires、Last-Modified、Pragma。如果想拿到其他字段，就必须在Access-Control-Expose-Headers里面指定。</li>
+</ul>
+<p><strong>服务器跨域</strong></p>
+<ul>
+<li>通过搭建中间转发层；</li>
+<li>Nginx反向代理；</li>
+</ul>
+</script></p>
       
 
       
@@ -254,18 +342,9 @@ a // [1, 2]，引用类型通过引用复制传递，两个变量指向同一个
   
 <nav id="article-nav">
   
-    <a href="/2017/12/29/type-detection/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          My-JS之类型检测
-        
-      </div>
-    </a>
   
-  
-    <a href="/2017/12/29/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Hello World</div>
+    <a href="/2017/12/31/asynchronous/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">My-JS之异步模式</div>
       <i class="icon-circle-right"></i>
     </a>
   
