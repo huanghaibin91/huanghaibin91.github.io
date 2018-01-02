@@ -15,7 +15,7 @@
 <meta property="og:url" content="https://huanghaibin91.github.io/2018/01/02/cross-domain/index.html">
 <meta property="og:site_name" content="HHB&#39;s BLOG">
 <meta property="og:description" content="浏览器为了安全，不允许从其他域调用对象，这被成为“同源政策”，同源是指：协议相同、域名相同和端口相同。 同源政策会在跨域时限制一些操作，其限制之一是不能通过ajax的方法去请求不同源中的文档，第二个限制是浏览器中不同域的框架之间是不能进行js的交互操作的，具体表现在三个方面：  Cookie、LocalStorage和 IndexedDB无法读取；  DOM无法获得；  AJAX请求无效（可以发送">
-<meta property="og:updated_time" content="2018-01-02T11:41:49.928Z">
+<meta property="og:updated_time" content="2018-01-02T12:46:38.108Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="My-JS之跨域">
 <meta name="twitter:description" content="浏览器为了安全，不允许从其他域调用对象，这被成为“同源政策”，同源是指：协议相同、域名相同和端口相同。 同源政策会在跨域时限制一些操作，其限制之一是不能通过ajax的方法去请求不同源中的文档，第二个限制是浏览器中不同域的框架之间是不能进行js的交互操作的，具体表现在三个方面：  Cookie、LocalStorage和 IndexedDB无法读取；  DOM无法获得；  AJAX请求无效（可以发送">
@@ -288,19 +288,7 @@ window.addEventListener(&apos;message&apos;, function(e) {
 <p>JSONP主要是用于解决Ajax跨域请求无效的情景。JSONP只能支持GET操作。</p>
 <p><strong>CORS</strong></p>
 <p>CORS，跨域资源共享，允许浏览器向跨源服务器，发出XMLHttpRequest请求，从而克服了AJAX只能同源使用的限制。CORS需要浏览器和服务器同时支持。目前，所有浏览器都支持该功能，IE浏览器不能低于IE10。CORS通信与同源的AJAX通信没有差别，代码完全一样。<strong>因此，实现CORS通信的关键是服务器。只要服务器实现了CORS接口，就可以跨源通信。</strong>服务器端对于CORS的支持，主要就是通过设置Access-<code>Control-Allow-Origin</code>来进行的。如果浏览器检测到相应的设置，就可以允许Ajax进行跨域的访问。</p>
-<p>CORS，主要是用于解决Ajax跨域请求无效的情景。与CORS请求相关的头信息：</p>
-<ul>
-<li><code>Access-Control-Allow-Origin</code>，该字段是必须的。它的值要么是请求时Origin字段的值，要么是一个*，表示接受任意域名的请求</li>
-<li><p><code>Access-Control-Allow-Credentials</code>，该字段可选。它的值是一个布尔值，表示是否允许发送Cookie，默认为false</p>
-<pre><code>// 客户端设置
-var xhr = new XMLHttpRequest();
-xhr.withCredentials = true;
-</code></pre></li>
-</ul>
-<p>如果要发送Cookie，Access-Control-Allow-Origin就不能设为星号，必须指定明确的、与请求网页一致的域名。同时，Cookie依然遵循同源政策，只有用服务器域名设置的Cookie才会上传，其他域名的Cookie并不会上传，且（跨源）原网页代码中的document.cookie也无法读取服务器域名下的Cookie。</p>
-<ul>
-<li><code>Access-Control-Expose-Headers</code>，该字段可选。CORS请求时，XMLHttpRequest对象的getResponseHeader()方法只能拿到6个基本字段：Cache-Control、Content-Language、Content-Type、Expires、Last-Modified、Pragma。如果想拿到其他字段，就必须在Access-Control-Expose-Headers里面指定。</li>
-</ul>
+<p>CORS，主要是用于解决Ajax跨域请求无效的情景。</p>
 <p><strong>服务器跨域</strong></p>
 <ul>
 <li>通过搭建中间转发层；</li>
