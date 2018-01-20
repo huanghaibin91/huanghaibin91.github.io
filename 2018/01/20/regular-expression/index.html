@@ -6,19 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://huanghaibin91.github.io">
-  <title>My-JS之异步模式 | HHB&#39;s BLOG</title>
+  <title>My-JS之正则表达式 | HHB&#39;s BLOG</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="JS是单线程的（所谓单线程，是指在JS引擎中负责解释和执行JavaScript代码的线程只有一个，叫主线程），就是说JS同一时间只能处理一件事。那么就可能出现这种情况：一件事需要花费很长时间处理，后面的事情只能等待，体验就非常差。 所以JS中将执行的任务分为两类：同步任务和异步任务。 同步任务，同步任务指的是，发出调用立即获得结果的为同步任务。同步任务会在调用之后一直等待，直到返回结果。 异步任务">
-<meta name="keywords" content="前端,JavaScript">
+  <meta name="description" content="正则表达式用于对字符串模式匹配及检索替换。 修饰符  g，全局模式，即模式将被应用于所有字符串，而非在发现第一个匹配项时立即停止； i，不区分大小写模式，即在确定匹配项时忽略模式与字符串的大小写； m，多行模式，即在到达一行文本末尾时还会继续查找下一行中是否存在与模式匹配的项；  元字符 元字符是拥有特殊含义的字符。">
+<meta name="keywords" content="前端,JS">
 <meta property="og:type" content="article">
-<meta property="og:title" content="My-JS之异步模式">
-<meta property="og:url" content="https://huanghaibin91.github.io/2017/12/31/asynchronous/index.html">
+<meta property="og:title" content="My-JS之正则表达式">
+<meta property="og:url" content="https://huanghaibin91.github.io/2018/01/20/regular-expression/index.html">
 <meta property="og:site_name" content="HHB&#39;s BLOG">
-<meta property="og:description" content="JS是单线程的（所谓单线程，是指在JS引擎中负责解释和执行JavaScript代码的线程只有一个，叫主线程），就是说JS同一时间只能处理一件事。那么就可能出现这种情况：一件事需要花费很长时间处理，后面的事情只能等待，体验就非常差。 所以JS中将执行的任务分为两类：同步任务和异步任务。 同步任务，同步任务指的是，发出调用立即获得结果的为同步任务。同步任务会在调用之后一直等待，直到返回结果。 异步任务">
-<meta property="og:updated_time" content="2017-12-31T08:46:07.064Z">
+<meta property="og:description" content="正则表达式用于对字符串模式匹配及检索替换。 修饰符  g，全局模式，即模式将被应用于所有字符串，而非在发现第一个匹配项时立即停止； i，不区分大小写模式，即在确定匹配项时忽略模式与字符串的大小写； m，多行模式，即在到达一行文本末尾时还会继续查找下一行中是否存在与模式匹配的项；  元字符 元字符是拥有特殊含义的字符。">
+<meta property="og:updated_time" content="2018-01-20T13:08:22.741Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="My-JS之异步模式">
-<meta name="twitter:description" content="JS是单线程的（所谓单线程，是指在JS引擎中负责解释和执行JavaScript代码的线程只有一个，叫主线程），就是说JS同一时间只能处理一件事。那么就可能出现这种情况：一件事需要花费很长时间处理，后面的事情只能等待，体验就非常差。 所以JS中将执行的任务分为两类：同步任务和异步任务。 同步任务，同步任务指的是，发出调用立即获得结果的为同步任务。同步任务会在调用之后一直等待，直到返回结果。 异步任务">
+<meta name="twitter:title" content="My-JS之正则表达式">
+<meta name="twitter:description" content="正则表达式用于对字符串模式匹配及检索替换。 修饰符  g，全局模式，即模式将被应用于所有字符串，而非在发现第一个匹配项时立即停止； i，不区分大小写模式，即在确定匹配项时忽略模式与字符串的大小写； m，多行模式，即在到达一行文本末尾时还会继续查找下一行中是否存在与模式匹配的项；  元字符 元字符是拥有特殊含义的字符。">
   
     <link rel="alternative" href="/atom.xml" title="HHB&#39;s BLOG" type="application/atom+xml">
   
@@ -146,67 +146,219 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-asynchronous" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-regular-expression" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      My-JS之异步模式
+      My-JS之正则表达式
     </h1>
   
 
         
-        <a href="/2017/12/31/asynchronous/" class="archive-article-date">
-  	<time datetime="2017-12-31T08:45:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-31</time>
+        <a href="/2018/01/20/regular-expression/" class="archive-article-date">
+  	<time datetime="2018-01-20T13:05:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-20</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>JS是单线程的（所谓单线程，是指在JS引擎中负责解释和执行JavaScript代码的线程只有一个，叫<strong>主线程</strong>），就是说JS同一时间只能处理一件事。那么就可能出现这种情况：一件事需要花费很长时间处理，后面的事情只能等待，体验就非常差。</p>
-<p>所以JS中将执行的任务分为两类：同步任务和异步任务。</p>
-<p>同步任务，同步任务指的是，发出调用立即获得结果的为同步任务。同步任务会在调用之后一直等待，直到返回结果。</p>
-<p>异步任务，异步任务指的是，发出调用，但无法立即获得结果，需要额外的操作才能得到预期的结果的为异步任务。调用之后和拿到结果之间，可以进行其他操作。</p>
+        <p>正则表达式用于对字符串模式匹配及检索替换。</p>
+<p><strong>修饰符</strong></p>
+<ul>
+<li><code>g</code>，全局模式，即模式将被应用于所有字符串，而非在发现第一个匹配项时立即停止；</li>
+<li><code>i</code>，不区分大小写模式，即在确定匹配项时忽略模式与字符串的大小写；</li>
+<li><code>m</code>，多行模式，即在到达一行文本末尾时还会继续查找下一行中是否存在与模式匹配的项；</li>
+</ul>
+<p><strong>元字符</strong></p>
+<p>元字符是拥有特殊含义的字符。</p>
 <a id="more"></a>
-<p><strong>JS运行环境运行机制</strong></p>
-<ol>
-<li>所有同步任务都在主线程上执行，形成一个执行栈；</li>
-<li>主线程之外，还存在一个任务队列（一个先进先出的队列，里面放着各种事件）。只要异步任务有了运行结果，就在任务队列之中放置一个事件；</li>
-<li>一旦执行栈中的所有同步任务执行完毕，系统就会读取任务队列，看看里面有哪些事件。那些对应的异步任务，于是结束等待状态，进入执行栈，开始执行；</li>
-<li>主线程不断重复上面的第三步；</li>
-</ol>
-<p>所以<strong>执行栈中的代码（同步任务），总是在读取任务队列（异步任务）之前执行</strong></p>
-<p><strong>事件和回调函数</strong></p>
-<p>事件，所谓的事件驱动就是将一切抽象为事件。I/O操作完成是一个事件，用户点击是一个事件，Ajax完成是一个事件，一个图片加载完成是一个事件，当产生事件后，这个事件会被放入任务队列中等待被处理。</p>
-<p>回调函数，与事件关联的函数，会在执行事件时调用。</p>
-<pre><code>setTimeout(fn, 1000); // 例如setTimeout时间到了就会对应一个事件，而fn就是事件执行时调用的回调函数
-</code></pre><p><strong>事件循环（event loop）</strong></p>
-<p>主线程只会做一件事情，就是从任务队列里面取事件、执行事件，再取事件、再执行。当任务队列为空时，就会等待直到任务队列变成非空。而且主线程只有在将当前的事件执行完成后，才会去取下一个事件。这种机制就叫做事件循环机制，取一个消息并执行的过程叫做一次循环。</p>
-<pre><code>setTimeout(function () {
-    console.log(1);
-}, 0);
-console.log(2);
+<ul>
+<li><code>.</code>，查找单个字符，除了换行和行结束符；</li>
+<li><code>\w</code>，查找单词字符；</li>
+<li><code>\W</code>，查找非单词字符；</li>
+<li><code>\d</code>，查找数字；</li>
+<li><code>\D</code>，查找非数字字符；</li>
+<li><code>\s</code>，查找空白字符；</li>
+<li><code>\S</code>，查找非空白字符；</li>
+<li><code>\b</code>，匹配单词边界；</li>
+<li><code>\B</code>，匹配非单词边界；</li>
+<li><code>\0</code>，查找NULL字符；</li>
+<li><code>\n</code>，查找换行符；</li>
+<li><code>\f</code>，查找换页符；</li>
+<li><code>\r</code>，查找回车符；</li>
+<li><code>\t</code>，查找制表符；</li>
+<li><code>\v</code>，查找垂直制表符；</li>
+<li><code>\xxx</code>，查找以八进制数 xxx 规定的字符；</li>
+<li><code>\xdd</code>，查找以十六进制数 dd 规定的字符；</li>
+<li><code>\uxxxx</code>，查找以十六进制数 xxxx 规定的 Unicode 字符；</li>
+</ul>
+<p><strong>字符组（方括号）</strong></p>
+<p>在正则表达式中，包裹于方括号中的为字符组，字符组的匹配结果是其中的一个字符。</p>
+<pre><code>[abc]  // 表示匹配一个字符，它可以是a、b、c之一
+</code></pre><p>字符组可以使用范围表示法处理字符组中字符较多的情况：</p>
+<pre><code>[abcdef] // 当字符组字符较多时
+[a-f] // 使用 - 作为连字符简写上面代码
+[ab-] // 当连字符不处于两个字符之间时或前面有专业符号时被当做字符匹配，这个正则会匹配a、b、-三个字符之一
+</code></pre><p>排除字符组，在正则表达式字符组中使用<code>^</code>表示排除字符组，查找任何不再方括号之间的字符：</p>
+<pre><code>[^abc] // 表示匹配一个不是a、b、c的任意字符
+</code></pre><p><strong>多选分支（管道符）</strong></p>
+<p>在正则表达式中，管道符<code>|</code>用于表示多选分支，支持多个模式任选其一进行匹配。</p>
+<pre><code>/aaa|bbb/ // 表示匹配字符串aaa、bbb其中之一，与字符组的区别是匹配其中之一模式，而字符组是匹配其中之一字符
 
-// 2
-// 1
+/[ab]|[12]/ // 表示匹配[ab]、[12]字符组的其中之一，然后再匹配字符组中的其中一个字符
 
-// setTimeout(..) 并不是直接把回调函数挂在任务队列中。它所做的是设定一个定时器。当定时器到时后，相当于产生了一个时间到了的事件，这个事件进入任务队列。这样，下个事件循环主线程会取出并执行这个事件的回调函数
-// 因为主线程会先执行完执行栈中的同步任务，才会去任务队列提取事件，所以异步任务的回调函数总是在同步任务知乎执行
-// 但如果任务队列中已经有多个事件排队，那么就会导致setTimeOut的函数延后运行，这就是为什么setTimeOut和setInterval不准确的原因
+/(aaa|bbb)ccc/ // 可以使用括号与分支匹配配合使用，表示部分使用分支匹配规则，其它使用另外的规则
+</code></pre><p>分支匹配是惰性的，当前的匹配上了，后边的就不再尝试了。</p>
+<pre><code>var reg = /good|goodbye/g;
+var reg2 = /goodbye|good/g; 
+var str = &apos;goodbye&apos;;
 
+str.match(reg); // [&apos;good&apos;]
+str.match(reg2); // [&apos;goodbye&apos;]
+</code></pre><p><strong>量词</strong></p>
+<p>量词就是重复，表示匹配字符重复的次数。</p>
+<ul>
+<li><code>n{X}</code>，匹配包含X个n的序列的字符串；</li>
+<li><code>n{X,}</code>，X是一个正整数。前面的模式n连续出现至少X次时匹配；</li>
+<li><code>n{X,Y}</code>，X和Y为正整数。前面的模式n连续出现至少X次，至多Y次时匹配；</li>
+<li><code>n+</code>，匹配任何包含至少一个n的字符串；</li>
+<li><code>n*</code>，匹配任何包含零个或多个n的字符串；</li>
+<li><code>n?</code>，匹配任何包含零个或一个n的字符串；</li>
+</ul>
+<p>使用量词匹配时又有贪婪匹配和惰性匹配两种情况：</p>
+<pre><code>var reg = /\d{2,5}/g;
+var str = &apos;1234&apos;;
 
-for (var i = 0; i &lt; 5; i++) {
-    setTimeout(function() {
-        console.log(new Date());
-    }, 1000);
-}
-console.log(new Date());
+str.match(reg); // [&apos;1234&apos;]，默认贪婪模式，正则表达式会尽可能多的匹配
 
-// 先输出一个日期，一秒后再几乎同时输出五个日期，但可以看出五个日期有细微的差别，这些误差就是因为任务队列中有多个事件排队导致后边事件延迟的结果
-</code></pre>
+var reg2 = /\d{2,5}/g; // [&apos;12&apos;, &apos;34&apos;]，在量词后边加上一个？符号，就是惰性匹配，即刚好满足条件的时候就不再向下继续匹配了
+</code></pre><p><strong>锚</strong></p>
+<p>位置（锚）是<strong>相邻字符之间的位置</strong>，用于匹配位置。</p>
+<ul>
+<li><code>^</code>，匹配开头，在多行匹配中匹配行开头；</li>
+<li><code>$</code>，匹配结尾，在多行匹配中匹配行结尾；</li>
+<li><code>\b</code>，匹配单词边界；单词边界，具体就是\w与\W之间的位置，也包括\w与^之间的位置，和\w与$之间的位置；</li>
+<li><code>\B</code>，匹配非单词边界；</li>
+<li><code>(?=p)</code>，其中p是一个子模式（子模式可以是正则表达式），即p前面的位置，或者说，该位置后面的字符要匹配p；</li>
+<li><code>(?!p)</code>，仍是p前面的位置，但位置后面的字符满足不匹配p；</li>
+</ul>
+<p>可以将位置理解为空字符，而位置匹配匹配便是这些空字符（位置）。</p>
+<pre><code>&apos;hello&apos; =&gt; &apos;&apos; + &apos;h&apos; + &apos;&apos; + &apos;e&apos; + &apos;&apos; + &apos;l&apos; + &apos;&apos; + &apos;l&apos; + &apos;&apos; + &apos;o&apos; + &apos;&apos;
+
+var str = &apos;hello&apos;;
+str.replace(/^/g, &apos;#&apos;); // &apos;#hello&apos;
+</code></pre><p><strong>分组（括号）</strong></p>
+<p>在正则表达式中，括号提供了分组，便于我们引用它。括号捕获的分组引用有两种情形：在JavaScript 里引用它，在正则表达式里引用它。</p>
+<ul>
+<li><p>分组，括号可以将正则的一部分分割成一组作为单独一个整体；</p>
+<pre><code>var str = &apos;abbbab&apos;;
+var reg = /ab+/g; // 量词仅作用于单个字符
+var reg2 = /(ab)+/g; // 量词作用于括号中整体
+
+str.match(reg); // [&apos;abbb&apos;, &apos;ab&apos;]
+str.match(reg2); // [&apos;ab&apos;, &apos;ab&apos;]
+</code></pre></li>
+<li><p>分支结构，括号与管道符配合使用；</p>
+<pre><code>var str = &apos;hello world, hi world&apos;;
+var reg = /(hello|hi) world/g;
+var reg2 = /hello|hi world/g;
+
+str.match(reg); // [&apos;hello world&apos;, &apos;hi world&apos;]
+str.match(reg2); // [&apos;hello&apos;, &apos;hi world&apos;]
+</code></pre></li>
+</ul>
+<p>在正则括号分组中，会给每一个分组都开辟一个空间，用来储存每一个分组匹配到的数据。当我们需要时。可以提取这些数据：</p>
+<ul>
+<li><p><code>str.match(reg)</code>，字符串的match方法，返回一个数组，第一个元素是整体匹配结果，然后是各个分组（括号里）匹配的内容，然后此数组还有两个额外属性是匹配下标index，输入的文本input；</p>
+</li>
+<li><p><code>reg.exec(str)</code>，正则的exec方法，与字符串的match返回值一致；</p>
+</li>
+<li><p>RegExp构造函数全局属性<code>$1-$9</code>，且基于最近一次正则表达式操作而改变；</p>
+<pre><code>var reg = /(\d{4})-(\d{2})-(\d{2})/;
+var str = &apos;2018-01-20&apos;;
+
+var arr = str.match(reg);
+arr.index; // 0
+arr.input; // &apos;2018-01-20&apos;
+
+// 下面两种方法都返回同样的结果，只是方法所属的对象不一样，分组获取的数据会保存在数组第一个元素之后
+str.match(reg); // [&apos;2018-01-20, &apos;2018&apos;, &apos;01&apos;, &apos;20&apos;]
+reg.exec(str); // [&apos;2018-01-20, &apos;2018&apos;, &apos;01&apos;, &apos;20&apos;]
+
+// 基于最近一次正则操作，例如调用了正则的方法或者字符串的正则方法之后，RegExp才会有保存了分组的全局属性
+RegExp.$1; // &apos;2018&apos;
+RegExp.$2; // &apos;01&apos;
+RegExp.$3; // &apos;20&apos;
+
+// 正则构造函数全局属性场用于替换，下面三种操作结果一致，皆为&apos;01/20/2018&apos;
+str.replace(reg, &quot;$2/$3/$1&quot;);
+str.replace(reg, function () {
+    return RegExp.$2 + &quot;/&quot; + RegExp.$3 + &quot;/&quot; + RegExp.$1;
+});
+str.replace(reg, function (match, year, month, day) {
+    return month + &quot;/&quot; + day + &quot;/&quot; + year;
+});
+</code></pre></li>
+<li><p>正则中使用<code>\1</code>结构，<code>\ + 数字</code>可以在正则本身里引用分组。但只能引用之前出现的分组，即<strong>反向引用</strong>；</p>
+<pre><code>var reg = /\d{4}(-|\/|\.)\d{2}\1\d{2}/; // 正则中使用了\1引用前面分组的结果，所以这有前后一致的情况下才会匹配成功
+var str = &apos;2018-01-20&apos;;
+var str2 = &apos;2018-01/20&apos;;
+
+reg.test(str); // true
+reg.test(str2); // false
+
+// 使用\ + 数字和$ + 数字引用分组，数组代表的分组，是以左括号为准，第一个左括号中内容就是1，依次向后推
+var reg = /^((\d)(\d(\d)))\1\2\3\4$/;
+var str = &quot;1231231233&quot;;
+reg.test(str) ); // true
+RegExp.$1; // 123
+RegExp.$2; // 1
+RegExp.$3; // 23
+RegExp.$4; // 3
+</code></pre></li>
+</ul>
+<p>分组特殊情况：</p>
+<ul>
+<li><p>引用了不存在的分组时，此时正则不会报错，只是匹配反向引用的字符本身；</p>
+</li>
+<li><p>分组后面有量词的话，分组最终捕获到的数据是最后一次的匹配；</p>
+<pre><code>var reg = /(\d)+/;
+var str = &apos;12345&apos;;
+
+str.match(reg); // [&apos;12345&apos;, &apos;5&apos;]数组中保存的分组是最后一次匹配
+
+var reg2 = /(\d)+ \1/;
+reg2.test(&apos;12345 1&apos;); // false
+reg2.test(&apos;12345 5&apos;); // true
+</code></pre></li>
+</ul>
+<p>括号还可以只分组不引用<code>(?:)</code>，这种结构的分组将不会出现在引用中。适用于后边不需要引用捕获组的情况，可以节约内存。</p>
+<p><strong>上面所有的操作符优先级从高到低为：转义符（\） =&gt; 字符组和分组（括号和方括号） =&gt; 量词 =&gt; 位置（锚）、元字符、一般字符 =&gt; 管道符</strong></p>
+<p><strong>回溯</strong></p>
+<p>回溯法是正则表达式匹配字符串的原理，回溯法原理：回溯法也称试探法，它的基本思想是从问题的某一种状态（初始状态）出发，搜索从这种状态出发所能达到的所有“状态”，当一条路走到“尽头”的时候（不能再前进），再后退一步或若干步，从另一种可能“状态”出发，继续搜索，直到所有的“路径”（状态）都试探过。这种不断“前进”、不断“回溯”寻找解的方法，就称作“回溯法”。</p>
+<p><strong>正则表达式操作方法</strong></p>
+<ul>
+<li><p>正则表达式方法：</p>
+<ul>
+<li>test，检索字符串中指定的值。返回 true 或 false；</li>
+<li>exec，检索字符串中指定的值。返回找到的值的数组，并确定其位置；</li>
+</ul>
+</li>
+<li><p>字符串的正则表达式方法：</p>
+<ul>
+<li>match，找到一个或多个正则表达式的匹配，同正则的exec方法结果一致；</li>
+<li>search，检索与正则表达式相匹配的值；</li>
+<li>replace，替换与正则表达式匹配的子串；</li>
+<li>split，把字符串分割为字符串数组；</li>
+</ul>
+</li>
+</ul>
+<p>这篇笔记主要是基于老姚的《JavaScript 正则表达式迷你书》整理笔记，十分感谢老姚的分享，<a href="https://zhuanlan.zhihu.com/p/29707385" target="_blank" rel="external">原书地址</a>。</p>
+
       
 
       
@@ -223,7 +375,7 @@ console.log(new Date());
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">JS</a>
         		</li>
       		
 		</ul>
@@ -242,18 +394,9 @@ console.log(new Date());
   
 <nav id="article-nav">
   
-    <a href="/2018/01/02/cross-domain/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          My-JS之跨域
-        
-      </div>
-    </a>
   
-  
-    <a href="/2017/12/31/prototype/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">My-JS只原型</div>
+    <a href="/2018/01/02/cross-domain/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">My-JS之跨域</div>
       <i class="icon-circle-right"></i>
     </a>
   
