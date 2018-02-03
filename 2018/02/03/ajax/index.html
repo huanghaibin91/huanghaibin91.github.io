@@ -6,19 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://huanghaibin91.github.io">
-  <title>My-JS之执行上下文 | HHB&#39;s BLOG</title>
+  <title>My-JS之Ajax | HHB&#39;s BLOG</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="执行上下文，就是Js执行的时候的一个运行环境/作用域（scope）。执行上下文决定了Js执行过程中可以获取哪些变量、函数、数据，一段程序可能被分割成许多不同的上下文，每一个上下文都会绑定一个变量对象（variable object），它就像一个容器，用来存储当前上下文中所有已定义或可获取的变量、函数等。">
+  <meta name="description" content="Ajax（异步的JavaScript和XML），核心是XMLHttpRequest对象，在用户和服务器之间加了一个中间层(Ajax引擎)，使用户操作与服务器响应异步化，通过XMlHttpRequest对象来向服务器发异步请求，从服务器获得数据，然后用javascript来操作DOM而更新页面。">
 <meta name="keywords" content="JavaScript,前端">
 <meta property="og:type" content="article">
-<meta property="og:title" content="My-JS之执行上下文">
-<meta property="og:url" content="https://huanghaibin91.github.io/2017/12/30/execution-context/index.html">
+<meta property="og:title" content="My-JS之Ajax">
+<meta property="og:url" content="https://huanghaibin91.github.io/2018/02/03/ajax/index.html">
 <meta property="og:site_name" content="HHB&#39;s BLOG">
-<meta property="og:description" content="执行上下文，就是Js执行的时候的一个运行环境/作用域（scope）。执行上下文决定了Js执行过程中可以获取哪些变量、函数、数据，一段程序可能被分割成许多不同的上下文，每一个上下文都会绑定一个变量对象（variable object），它就像一个容器，用来存储当前上下文中所有已定义或可获取的变量、函数等。">
-<meta property="og:updated_time" content="2017-12-30T06:28:44.679Z">
+<meta property="og:description" content="Ajax（异步的JavaScript和XML），核心是XMLHttpRequest对象，在用户和服务器之间加了一个中间层(Ajax引擎)，使用户操作与服务器响应异步化，通过XMlHttpRequest对象来向服务器发异步请求，从服务器获得数据，然后用javascript来操作DOM而更新页面。">
+<meta property="og:updated_time" content="2018-02-03T02:21:11.798Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="My-JS之执行上下文">
-<meta name="twitter:description" content="执行上下文，就是Js执行的时候的一个运行环境/作用域（scope）。执行上下文决定了Js执行过程中可以获取哪些变量、函数、数据，一段程序可能被分割成许多不同的上下文，每一个上下文都会绑定一个变量对象（variable object），它就像一个容器，用来存储当前上下文中所有已定义或可获取的变量、函数等。">
+<meta name="twitter:title" content="My-JS之Ajax">
+<meta name="twitter:description" content="Ajax（异步的JavaScript和XML），核心是XMLHttpRequest对象，在用户和服务器之间加了一个中间层(Ajax引擎)，使用户操作与服务器响应异步化，通过XMlHttpRequest对象来向服务器发异步请求，从服务器获得数据，然后用javascript来操作DOM而更新页面。">
   
     <link rel="alternative" href="/atom.xml" title="HHB&#39;s BLOG" type="application/atom+xml">
   
@@ -146,157 +146,180 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-execution-context" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-ajax" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      My-JS之执行上下文
+      My-JS之Ajax
     </h1>
   
 
         
-        <a href="/2017/12/30/execution-context/" class="archive-article-date">
-  	<time datetime="2017-12-30T06:27:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-30</time>
+        <a href="/2018/02/03/ajax/" class="archive-article-date">
+  	<time datetime="2018-02-03T02:20:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-02-03</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>执行上下文，就是Js执行的时候的一个运行环境/作用域（scope）。执行上下文决定了Js执行过程中可以获取哪些变量、函数、数据，一段程序可能被分割成许多不同的上下文，每一个上下文都会绑定一个变量对象（variable object），它就像一个容器，用来存储当前上下文中所有已定义或可获取的变量、函数等。</p>
+        <p>Ajax（异步的JavaScript和XML），核心是<code>XMLHttpRequest</code>对象，在用户和服务器之间加了一个中间层(Ajax引擎)，使用户操作与服务器响应异步化，通过XMlHttpRequest对象来向服务器发异步请求，从服务器获得数据，然后用javascript来操作DOM而更新页面。</p>
 <a id="more"></a>
-<p><strong>可执行代码</strong></p>
-<p>既然执行上下文是在JS执行的时候创建的，那么JS中可执行代码的类型有：</p>
+<p><strong>Ajax特点</strong></p>
 <ul>
-<li>全局代码，这个是默认的代码运行环境，一旦代码被载入，引擎最先进入的就是这个环境；</li>
-<li>函数级别的代码，当执行一个函数时，运行函数体中的代码；</li>
-<li>Eval的代码，在Eval函数内运行的代码；</li>
-</ul>
-<p><strong>执行上下文特点</strong></p>
-<p>执行上下文有以下特点：</p>
+<li><p>优点：</p>
 <ul>
-<li>单线程；</li>
-<li>同步执行，只有栈顶的上下文处于执行中，其他上下文需要等待；</li>
-<li>唯一的一个全局上下文，它在浏览器关闭时出栈；</li>
-<li>函数的执行上下文的个数没有限制；</li>
-<li>每次某个函数被调用，就会有个新的执行上下文为其创建，即使是调用的自身函数，也是如此；</li>
+<li>最大的一点是页面无刷新，在页面内与服务器通信，给用户的体验非常好；</li>
+<li>使用异步方式与服务器通信，不需要打断用户的操作，具有更加迅速的响应能力；</li>
+<li>可以把以前一些服务器负担的工作转嫁到客户端，利用客户端闲置的能力来处理，减轻服务器和带宽的负担，节约空间和宽带租用成本。并且减轻服务器的负担，ajax的原则是“按需取数据”，可以最大程度的减少冗余请求，和响应对服务器造成的负担；</li>
+<li>基于标准化的并被广泛支持的技术，不需要下载插件或者小程序；</li>
 </ul>
-<p><strong>执行上下文的创建和执行</strong></p>
+</li>
+<li><p>缺点：</p>
 <ul>
-<li>上下文的创建阶段：函数被调用，但尚未开始执行（代码分析预处理阶段），此时会为执行上下文创建作用域链，创建变量、函数和参数以及求this的值。也就是发生声明提升的阶段，同时也是产生声明提升的原因；</li>
-<li>执行阶段：指派变量的值和函数的引用并解释执行代码，也就是变量赋值，函数引用，执行其它代码，在执行阶段，JS引擎会创建执行上下文栈来管理执行上下文；   </li>
+<li>ajax干掉了back按钮，即对浏览器后退机制的破坏；</li>
+<li>ajax也难以避免一些已知的安全弱点，诸如跨站点脚步攻击、SQL注入攻击和基于credentials的安全漏洞等；<br>-对搜索引擎的支持比较弱；</li>
+<li>破坏了程序的异常机制，异步不好获取错误；</li>
+<li>违背了url和资源定位的初衷；</li>
 </ul>
-<p>简单例子：</p>
-<pre><code>var a = 1; // ①
-function f() { // ②
-    var a = 2; // ③
-    function sayA() { // ④
-        console.log(a); // ⑤
-    }
-    sayA(); // ⑥
-} 
-f(); // ⑦
-</code></pre><p>首先先将执行上下文和执行上下文栈具象化：</p>
-<ul>
-<li><p>将每个执行上下文看作一个对象，它包含三个属性：</p>
-<pre><code>ECObj = {
-    variableObject: {}, // 变量对象，函数中的arguments对象, 参数, 内部的变量以及函数声明 
-       scopeChain: [], // 作用域链，包含执行上下文自身变量对象以及所有父执行上下文中的变量对象，也就是所有可访问的变量和函数
-       this: {} // this指向的对象
-};
-</code></pre></li>
-<li><p>将执行上下文栈看作一个数组；</p>
-<pre><code>ECStack = []; // 初始执行上下文栈为空数组
-</code></pre></li>
+</li>
 </ul>
-<p>上面代码具体执行情况：</p>
+<p><strong>Ajax过程</strong></p>
+<p>Ajax过程：创建AJAX对象，发出HTTP请求，接收服务器传回的数据，更新网页数据，一旦拿到服务器返回的数据，AJAX不会刷新整个网页，而是只更新相关部分，从而不打断用户正在做的事情。</p>
 <ol>
-<li><p>代码开始执行之前，首先创建全局执行上下文；</p>
-<pre><code>globalECObj = {
-    variableObject: {
-        f: pointer to function f(), // 函数声明会指向该函数在内存中的地址的一个引用，所以函数可以在声明之前调用
-        a: undefined // 变量声明初始化会是undefined
-    },
-       scopeChain: Object.assign({}, globalECObj.variableObject), // 作用域链是全局作用域
-       this: window
-};
-
-// 执行全局执行上下文，全局执行上下文入栈
-ECStack.push(globalECObj);
+<li><p>创建Ajax：</p>
+<pre><code>// 跨浏览器创建Ajax，IE7+就支持XMLHttpRequest对象
+var createXHR = (function createXHR() {
+    if (typeof XMLHttpRequest !== &apos;undefined&apos;) {
+        return function () {
+            return new XMLHttpRequest();
+        }
+    } else if (typeof ActiveXObject !== &apos;undefined&apos;) {
+        return function () {
+            if (typeof arguments.callee.activeXString !== &apos;string&apos;) {
+                var versions = [&apos;MSXML2.XMLHttp.6.0&apos;, &apos;MSXML2.XMLHttp.6.0&apos;, &apos;MSXML2.XMLHttp&apos;];
+                for (var i = 0, len = versions.length; i &lt; len; i++) {
+                    try {
+                        new ActiveXObject(versions[i]);
+                        arguments.callee.activeXString = versions[i];
+                        break;
+                    } catch (ex) {
+                    // 跳过
+                    }
+                }
+            }
+            return new ActiveXObject(arguments.callee.activeXString);
+        };
+    } else {
+        return function () {
+            throw new Error(&apos;No XHR object available.&apos;);
+        };
+    }
+})();
 </code></pre></li>
-<li><p>全局执行上下文创建完毕，开始执行代码，从上至下，① 为赋值操作；</p>
-<pre><code>// ① var a = 1; 给全局变量a赋值
-globalECObj = {
-    variableObject: {
-        f: pointer to function f(), 
-        a: 1
-    },
-       scopeChain: Object.assign({}, globalECObj.variableObject),
-       this: window
-};
-</code></pre></li>
-<li><p>跳过函数声明直到遇到可执行到代码 ⑦ ；</p>
-<pre><code>// ⑦ f(); 遇到函数调用，创建函数f的执行上下文
-fECObj = {
-    variableObject: {
-        sayA: pointer to function sayA(),
-        a: undefined
-    },
-       scopeChain: Object.assign({}, globalECObj.variableObject, fECObj.variableObject), // 作用域链是全局作用域和f函数作用域
-       this: window
-};
+<li><p>使用Ajax：</p>
+<pre><code>// 创建Ajax对象        
+var xhr = createXHR();
 
-// 函数f执行上下文入栈
-ECStack.push(fECObj);
+// 同步请求
+// 使用XHR对象时，调用的第一个方法是open()，接收三个参数，要发起请求的类型（&apos;get&apos;,&apos;post&apos;等），请求的URL和表示是否异步发送请求的布尔值，false表示同步
+xhr.open(&apos;get&apos;, &apos;example.php&apos;, false);
+// send()方法，接收一个参数，即要作为请求主体发送的数据，如果不需要通过请求主体发送数据，则必须传入null
+xhr.send(null);
+if ((xhr.status &gt;= 200 &amp;&amp; xhr.status &lt; 300) || xhr.status == 304) {
+    console.log(xhr.responseText);
+} else {
+    console.log(&apos;request was unsuccessful&apos; + xhr.status);
+}
 
-// 执行f执行上下文
-// ③ var a = 2; 给局部变量a赋值
-fECObj = {
-    variableObject: {
-        sayA: pointer to function sayA(),
-        a: 2
-    },
-       scopeChain: Object.assign({}, globalECObj.variableObject, fECObj.variableObject),
-       this: window
+// 异步请求
+xhr.open(&apos;get&apos;, &apos;example.php&apos;, true);
+xhr.send(null);
+// 异步有readyState属性，表示当前响应的活动阶段，4表示完成，readyState每次变化会触发readyStateChange事件
+// response属性为只读，返回接收到的数据体（即body部分）。它的类型可以是ArrayBuffer、Blob、Document、JSON对象、或者一个字符串，这由XMLHttpRequest.responseType属性的值决定。本次请求没有成功或者数据不完整，该属性就会等于null
+xhr.onreadyStateChange = function () {
+    if (xhr.readyState == 4) {
+        if ((xhr.status &gt;= 200 &amp;&amp; xhr.status &lt; 300) || xhr.status == 304) {
+            // 处理返回值
+        } else {
+            // 返回数据失败
+            console.log(&apos;Request was unsuccessful&apos; + xhr.status);
+        }
+    }
 }
 </code></pre></li>
-<li><p>执行函数f执行上下文中又遇到可执行代码 ⑥ ；</p>
-<pre><code>// ⑥ sayA(); 遇到函数调用，创建函数sayA执行上下文
-sayAECObj = {
-    variableObject: {},
-       scopeChain: Object.assign({}, globalECObj.variableObject, fECObj.variableObject, sayAECObj.variableObject), // 作用域链是全局作用域和f函数作用域和sayA函数作用域
-       this: window
-};
-
-// 函数sayA执行上下文入栈
-ECStack.push(sayAECObj);
-
-// 执行sayA执行上下文
-2 // 弹出结果2
-</code></pre></li>
-<li><p>sayA函数执行结束，从执行上下文栈弹出</p>
-<pre><code>ECStack.pop();
-</code></pre></li>
-<li><p>f函数执行结束，从执行上下文栈弹出</p>
-<pre><code>ECStack.pop();
-</code></pre></li>
-<li><p>现在只剩全局执行上下文了，它会在浏览器关闭从执行上下文栈中弹出</p>
+</ol>
+<p><strong>Ajax请求类型</strong></p>
+<ul>
+<li><code>GET</code>，常用于向服务器查询某些信息get请求HTML的responseText返回的是HTML的字符串查询字符串中每个参数的名称和值都必须使用encodeURIComponent()进行编码向URL的末尾添加查询字符串参数；</li>
+<li><code>POST</code>，post请求，通常用于向服务器发送应该被保存的数据，通常用于表单提交；</li>
+</ul>
+<p><strong>Ajax方法和属性</strong></p>
+<ul>
+<li><p>Ajax方法：</p>
+<ul>
+<li><code>.open(method, url, false/true)</code>，准备启动一个AJAX请求；</li>
+<li><code>.setRequestHeader()</code>，设置请求头部信息，必须在open()方法之后send()之前；</li>
+<li><code>.send()</code>，发送AJAX请求，send方法参数不能为空，即时不需要发送任何数据的GET请求，也需要在调用.send()方法时，向其传入null值；</li>
+<li><code>.getResponseHeader()</code>，获得响应头部信息；</li>
+<li><code>.getAllResponseHeader()</code>，获得一个包含所有头部信息的长字符串；</li>
+<li><code>.abort()</code>，取消异步请求；</li>
+<li><code>.overrideMineType()</code>，重写xhr响应返回数据的MIME类型，必须在send()方法之前调用；</li>
+</ul>
 </li>
-</ol>
-<p><strong>执行上下文过程</strong></p>
-<ol>
-<li>JS代码加载完成；</li>
-<li>创建全局执行上下文，为全局执行上下文创建作用域链，创建变量、函数和参数以及求this的值；</li>
-<li>全局执行上下文入执行上下文栈，开始执行代码；</li>
-<li>JS为单线程，从上至下当遇到可执行代码，就新建一个执行上下文，为新建执行上下文创建作用域链，创建变量、函数和参数以及求this的值；</li>
-<li>新建执行上下文入执行上下文栈，开始执行代码；</li>
-<li>如果可执行代码中还有可执行代码就重复4和5；</li>
-<li>执行完成的执行上下文从执行上下文栈顶弹出；</li>
-<li>关闭浏览器后全局执行上下文从执行上下文栈中弹出，执行上下文栈清空；</li>
-</ol>
+<li><p>Ajax属性：</p>
+<ul>
+<li><code>.responseText</code>，包含响应主体返回文本；</li>
+<li><code>.responseXML</code>，如果响应的内容类型时text/xml或application/xml，该属性将保存包含着相应数据的XML DOM文档；</li>
+<li><code>.status</code>，响应的HTTP状态；<ul>
+<li>200, OK，访问正常，基本上，只有2xx和304的状态码，表示服务器返回是正常状态；</li>
+<li>301, Moved Permanently，永久移动；</li>
+<li>302, Move temporarily，暂时移动；</li>
+<li>304, Not Modified，未修改；</li>
+<li>307, Temporary Redirect，暂时重定向；</li>
+<li>401, Unauthorized，未授权；</li>
+<li>403, Forbidden，禁止访问；</li>
+<li>404, Not Found，未发现指定网址；</li>
+<li>500, Internal Server Error，服务器发生错误；</li>
+</ul>
+</li>
+<li><code>.statusText</code>，HTTP状态的说明；</li>
+<li><code>.readyState</code>，表示“请求”/“响应”过程的当前活动阶段；<ul>
+<li>0，未初始化，未调用open()方法；</li>
+<li>1，启动，调用open()方法，未调用send()方法；</li>
+<li>2，发送，调用send()方法，未收到响应；</li>
+<li>3，接收，已经收到部分响应数据；</li>
+<li>4，完成，已收到全部响应数据；</li>
+</ul>
+</li>
+<li><code>.timeout</code>，请求等待响应多少毫秒之后终止请求；</li>
+</ul>
+</li>
+<li><p>Ajax事件，事件绑定<code>xhr.onreadystatechange = fn</code>、<code>xhr.addEventListener(&#39;readystatechange&#39;, fn)</code>两种方式：</p>
+<ul>
+<li><code>readystatechange</code>，异步请求readyState属性改变触发；</li>
+<li><code>timeout</code>，在timeout属性规定的时间没有接收到响应触发；</li>
+<li>进度事件，进度事件是在Ajax响应各个阶段触发：<ul>
+<li><code>loadStart</code>，接收响应数据第一个字节时触发；</li>
+<li><code>progress</code>，接收数据时不断触发，progress事件必须在open()方法之前绑定progress的事件event对象，event拥有几个属性：<ul>
+<li><code>event.target</code>，指向XHR对象；</li>
+<li><code>event.lengthComputable</code>，布尔值，表示进度信息是否可用；</li>
+<li><code>position</code>，表示已经接收的字节数；</li>
+<li><code>totalSize</code>，表示根据Content-Length响应头部确定的预期字节数；</li>
+</ul>
+</li>
+<li><code>error</code>，请求发生错误时触发；</li>
+<li><code>abort</code>，在因为调用abort()方法终止请求时调用；</li>
+<li><code>load</code>，接收完整响应数据时触发，类似readyState属性为4阶段；</li>
+<li><code>loadend</code>，通信完成或者触发error、abort和load事件后触发；</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 
       
 
@@ -333,18 +356,9 @@ ECStack.push(sayAECObj);
   
 <nav id="article-nav">
   
-    <a href="/2017/12/30/function/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          My-JS之函数
-        
-      </div>
-    </a>
   
-  
-    <a href="/2017/12/30/scope/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">My-JS之作用域</div>
+    <a href="/2018/01/20/regular-expression/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">My-JS之正则表达式</div>
       <i class="icon-circle-right"></i>
     </a>
   
