@@ -8,17 +8,19 @@
   <link rel="dns-prefetch" href="https://huanghaibin91.github.io">
   <title>My-JS之Ajax | HHB&#39;s BLOG</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Ajax（异步的JavaScript和XML），核心是XMLHttpRequest对象，在用户和服务器之间加了一个中间层(Ajax引擎)，使用户操作与服务器响应异步化，通过XMlHttpRequest对象来向服务器发异步请求，从服务器获得数据，然后用javascript来操作DOM而更新页面。">
-<meta name="keywords" content="JavaScript,前端">
+  <meta name="description" content="Ajax（异步的JavaScript和XML），核心是XMLHttpRequest对象，在用户和服务器之间加了一个中间层(Ajax引擎)，使用户操作与服务器响应异步化，通过XMLHttpRequest对象来向服务器发异步请求，从服务器获得数据，然后用javascript来操作DOM而更新页面。">
+<meta name="keywords" content="前端,JavaScript">
 <meta property="og:type" content="article">
 <meta property="og:title" content="My-JS之Ajax">
 <meta property="og:url" content="https://huanghaibin91.github.io/2018/02/03/ajax/index.html">
 <meta property="og:site_name" content="HHB&#39;s BLOG">
-<meta property="og:description" content="Ajax（异步的JavaScript和XML），核心是XMLHttpRequest对象，在用户和服务器之间加了一个中间层(Ajax引擎)，使用户操作与服务器响应异步化，通过XMlHttpRequest对象来向服务器发异步请求，从服务器获得数据，然后用javascript来操作DOM而更新页面。">
-<meta property="og:updated_time" content="2018-02-03T02:21:11.798Z">
+<meta property="og:description" content="Ajax（异步的JavaScript和XML），核心是XMLHttpRequest对象，在用户和服务器之间加了一个中间层(Ajax引擎)，使用户操作与服务器响应异步化，通过XMLHttpRequest对象来向服务器发异步请求，从服务器获得数据，然后用javascript来操作DOM而更新页面。">
+<meta property="og:image" content="https://raw.githubusercontent.com/huanghaibin91/My-JS/master/image/get-post.png">
+<meta property="og:updated_time" content="2018-03-23T15:30:24.199Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="My-JS之Ajax">
-<meta name="twitter:description" content="Ajax（异步的JavaScript和XML），核心是XMLHttpRequest对象，在用户和服务器之间加了一个中间层(Ajax引擎)，使用户操作与服务器响应异步化，通过XMlHttpRequest对象来向服务器发异步请求，从服务器获得数据，然后用javascript来操作DOM而更新页面。">
+<meta name="twitter:description" content="Ajax（异步的JavaScript和XML），核心是XMLHttpRequest对象，在用户和服务器之间加了一个中间层(Ajax引擎)，使用户操作与服务器响应异步化，通过XMLHttpRequest对象来向服务器发异步请求，从服务器获得数据，然后用javascript来操作DOM而更新页面。">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/huanghaibin91/My-JS/master/image/get-post.png">
   
     <link rel="alternative" href="/atom.xml" title="HHB&#39;s BLOG" type="application/atom+xml">
   
@@ -166,7 +168,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Ajax（异步的JavaScript和XML），核心是<code>XMLHttpRequest</code>对象，在用户和服务器之间加了一个中间层(Ajax引擎)，使用户操作与服务器响应异步化，通过XMlHttpRequest对象来向服务器发异步请求，从服务器获得数据，然后用javascript来操作DOM而更新页面。</p>
+        <p>Ajax（异步的JavaScript和XML），核心是<code>XMLHttpRequest</code>对象，在用户和服务器之间加了一个中间层(Ajax引擎)，使用户操作与服务器响应异步化，通过<code>XMLHttpRequest</code>对象来向服务器发异步请求，从服务器获得数据，然后用javascript来操作DOM而更新页面。</p>
 <a id="more"></a>
 <p><strong>Ajax特点</strong></p>
 <ul>
@@ -180,8 +182,9 @@
 </li>
 <li><p>缺点：</p>
 <ul>
-<li>ajax干掉了back按钮，即对浏览器后退机制的破坏；</li>
-<li>ajax也难以避免一些已知的安全弱点，诸如跨站点脚步攻击、SQL注入攻击和基于credentials的安全漏洞等；<br>-对搜索引擎的支持比较弱；</li>
+<li>ajax干掉了back按钮，即对浏览器后退机制的破坏，因为Ajax是页面无刷新更新的内容，所以使用后退按钮并不是数据更新之前的页面；</li>
+<li>ajax也难以避免一些已知的安全弱点，诸如跨站点脚本攻击、SQL注入攻击和基于credentials的安全漏洞等；</li>
+<li>对搜索引擎的支持比较弱；</li>
 <li>破坏了程序的异常机制，异步不好获取错误；</li>
 <li>违背了url和资源定位的初衷；</li>
 </ul>
@@ -192,6 +195,7 @@
 <ol>
 <li><p>创建Ajax：</p>
 <pre><code>// 跨浏览器创建Ajax，IE7+就支持XMLHttpRequest对象
+// 使用惰性载入的方式，利用IFEE和return让变量声明时进行一次分支检测，以后使用便不再执行if分支检测，固定createXHR的值
 var createXHR = (function createXHR() {
     if (typeof XMLHttpRequest !== &apos;undefined&apos;) {
         return function () {
@@ -254,16 +258,43 @@ xhr.onreadyStateChange = function () {
 </ol>
 <p><strong>Ajax请求类型</strong></p>
 <ul>
-<li><code>GET</code>，常用于向服务器查询某些信息get请求HTML的responseText返回的是HTML的字符串查询字符串中每个参数的名称和值都必须使用encodeURIComponent()进行编码向URL的末尾添加查询字符串参数；</li>
-<li><code>POST</code>，post请求，通常用于向服务器发送应该被保存的数据，通常用于表单提交；</li>
+<li><p><code>GET</code>，常用于向服务器查询某些信息，get请求HTML的responseText返回的是HTML的字符串，查询字符串中每个参数的名称和值都必须使用<code>encodeURIComponent()</code>进行编码向URL的末尾添加查询字符串参数，GET/HEAD请求，<code>send()</code>方法一般不传参或传null。不过即使传入了参数，参数也最终被忽略，<code>xhr.send(data)</code>中的data会被置为null；</p>
+<pre><code>// 向URL的末尾添加查询字符串参数
+function addURLParam(url, name, value) {
+    url += (url.index(&apos;?&apos;) == -1 ? &apos;?&apos; : &apos;&amp;&apos;);
+    url += encodeURIComponent(name) + &apos;=&apos; + encodeURIComponent(value);
+    return url;
+}
+</code></pre><p>  <code>GET</code>请求特点：</p>
+<pre><code>- GET 请求可被缓存；
+- GET 请求保留在浏览器历史记录中；
+- GET 请求可被收藏为书签；
+- GET 请求不应在处理敏感数据时使用；
+- GET 请求有长度限制；
+- GET 请求只应当用于取回数据；
+</code></pre></li>
+<li><p><code>POST</code>，post请求，通常用于向服务器发送应该被保存的数据，通常用于表单提交，<code>POST</code>请求特点：</p>
+<pre><code>- POST 请求不会被缓存；
+- POST 请求不会保留在浏览器历史记录中；
+- POST 不能被收藏为书签；
+- POST 请求对数据长度没有要求；
+</code></pre></li>
 </ul>
+<p><code>GET</code>与<code>POST</code>，区别：</p>
+<p><img src="https://raw.githubusercontent.com/huanghaibin91/My-JS/master/image/get-post.png" alt=""></p>
 <p><strong>Ajax方法和属性</strong></p>
 <ul>
 <li><p>Ajax方法：</p>
 <ul>
 <li><code>.open(method, url, false/true)</code>，准备启动一个AJAX请求；</li>
-<li><code>.setRequestHeader()</code>，设置请求头部信息，必须在open()方法之后send()之前；</li>
-<li><code>.send()</code>，发送AJAX请求，send方法参数不能为空，即时不需要发送任何数据的GET请求，也需要在调用.send()方法时，向其传入null值；</li>
+<li><code>.setRequestHeader()</code>，设置请求头部信息，必须在open()方法之后send()之前，此方法可以调用多次，内容会追加不会覆盖；</li>
+<li><code>.send(data)</code>，发送AJAX请求，send方法参数不能为空，即时不需要发送任何数据的GET请求，也需要在调用.send()方法时，向其传入null值，可以传入的数据类型<code>Array</code>，<code>Buffer</code>，<code>Blob</code>，<code>Document</code>，<code>DOMString</code>，<code>FormData</code>，<code>null</code>。xhr.send(data)中data参数的数据类型会影响请求头部content-type的默认值：<ul>
+<li>如果data是Document类型，同时也是HTML Document类型，则content-type默认值为<code>text/html;charset=UTF-8;</code>否则为<code>application/xml;charset=UTF-8</code>；</li>
+<li>如果data是DOMString类型，content-type默认值为<code>text/plain;charset=UTF-8</code>；</li>
+<li>如果data是FormData类型，content-type默认值为<code>multipart/form-data; boundary=[xxx]</code>；</li>
+<li>如果data是其他类型，则不会设置content-type的默认值；</li>
+</ul>
+</li>
 <li><code>.getResponseHeader()</code>，获得响应头部信息；</li>
 <li><code>.getAllResponseHeader()</code>，获得一个包含所有头部信息的长字符串；</li>
 <li><code>.abort()</code>，取消异步请求；</li>
@@ -273,6 +304,7 @@ xhr.onreadyStateChange = function () {
 <li><p>Ajax属性：</p>
 <ul>
 <li><code>.responseText</code>，包含响应主体返回文本；</li>
+<li><code>.responseType</code>，用来指定服务器返回数据（xhr.response）的类型：“”：字符串（默认值）；“aybuffer”：ArrayBuffer对象；“blob”：Blob对象；“document”：Document对象；“json”：JSON对象；“text”：字符串；</li>
 <li><code>.responseXML</code>，如果响应的内容类型时text/xml或application/xml，该属性将保存包含着相应数据的XML DOM文档；</li>
 <li><code>.status</code>，响应的HTTP状态；<ul>
 <li>200, OK，访问正常，基本上，只有2xx和304的状态码，表示服务器返回是正常状态；</li>
@@ -296,6 +328,7 @@ xhr.onreadyStateChange = function () {
 </ul>
 </li>
 <li><code>.timeout</code>，请求等待响应多少毫秒之后终止请求；</li>
+<li><code>.withCredentials</code>，CORS跨域默认不能传递cookie，在跨域请求中，client端必须手动设置<code>xhr.withCredentials=true</code>，且server端也必须允许request能携带认证信息（即response header中包含<code>Access-Control-Allow-Credentials:true）</code>，这样浏览器才会自动将cookie加在request header中；</li>
 </ul>
 </li>
 <li><p>Ajax事件，事件绑定<code>xhr.onreadystatechange = fn</code>、<code>xhr.addEventListener(&#39;readystatechange&#39;, fn)</code>两种方式：</p>
@@ -320,7 +353,41 @@ xhr.onreadyStateChange = function () {
 </ul>
 </li>
 </ul>
+<p><strong>Ajax上传文件</strong></p>
+<p>Ajax除了能从服务器获取数据，还可以像服务器传递数据。</p>
+<pre><code>// 利用formData模拟file控件。进行文件上传，IE9+
+function uploadFiles(url, files) {
+    var formData = new FormData(); // 创建FormData实例，FormData对象，序列化表单，使用FormData不必明确设置头部，XHR对象能够识别数据类型是FormData的实例并配置适当的头部信息。FormData可以将表单字段的名称name和值value进行URL编码，使用和号（&amp;）分割。可以直接将form元素传入FormData构造函数，或者使用append方法传入键值对，对应的键值对就已经添加到表单里面了，你在控制台看到的是FormData原型，存储的数据没有以对象属性的方式体现，可以理解为类的私有字段，外界访问不到，所以显示的是空对象，但是你可以通过formData.get(key)的方式获取到对应的表单数据
+    for (var i = 0, file; file = files[i]; ++i) {
+        // new FormData(formElement)
+        // formData.append(key, value)
+        // formData.get(key)
+        formData.append(file.name, file); // 可加入第三个参数，表示文件名 
+    }
+    var xhr = new XMLHttpRequest();
+    xhr.open(&apos;POST&apos;, url, true);
+    xhr.onload = function (e) {
+        // 文件创建成功后操作
+    };
+    xhr.send(formData); // multipart/form-data，直接将formData对象利用send方法传给服务器
+}
 
+
+// 直接使用file API上传文件
+function uploadFiles(url, files) {
+    for (var i = 0, file; file = files[i]; ++i) {
+        var xhr = new XMLHttpRequest();
+        xhr.open(&apos;POST&apos;, &apos;myserver/uploads&apos;);
+        xhr.setRequestHeader(&apos;Content-Type&apos;, file.type);
+           xhr.send(file);
+    }
+}
+
+// 元素绑定事件触发上传
+document.querySelector(&apos;input[type=&quot;file&quot;]&apos;).addEventListener(&apos;change&apos;, function (e) {
+    uploadFiles(&apos;/server&apos;, this.files);
+}, false);
+</code></pre>
       
 
       
@@ -333,11 +400,11 @@ xhr.onreadyStateChange = function () {
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">前端</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">前端</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
         		</li>
       		
 		</ul>
@@ -356,11 +423,11 @@ xhr.onreadyStateChange = function () {
   
 <nav id="article-nav">
   
-    <a href="/2018/02/08/mobile/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2018/02/05/DOM/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          移动端布局解决方案
+          My-JS之DOM
         
       </div>
     </a>
@@ -490,11 +557,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
+                <a href="javascript:void(0)" class="js-tag color3">前端</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">前端</a>
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
               </li>
              
               <li class="article-tag-list-item">

@@ -6,17 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://huanghaibin91.github.io">
-  <title>Archives | HHB&#39;s BLOG</title>
+  <title>My-JS之本地存储 | HHB&#39;s BLOG</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="huanghaibin91 的博客">
-<meta property="og:type" content="website">
-<meta property="og:title" content="HHB&#39;s BLOG">
-<meta property="og:url" content="https://huanghaibin91.github.io/archives/page/2/index.html">
+  <meta name="description" content="Cookie HTTP是一个不保存状态的协议，也就说同个客户端即使多次向同个服务器发出请求，服务器也做出响应了，但服务器却不知道是否是同一个客户端发出的请求。而cookie可以保存一段信息，在请求时发给服务器让无状态的HTTP协议也可以记录状态信息。">
+<meta name="keywords" content="前端,JavaScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="My-JS之本地存储">
+<meta property="og:url" content="https://huanghaibin91.github.io/2018/03/25/storage/index.html">
 <meta property="og:site_name" content="HHB&#39;s BLOG">
-<meta property="og:description" content="huanghaibin91 的博客">
+<meta property="og:description" content="Cookie HTTP是一个不保存状态的协议，也就说同个客户端即使多次向同个服务器发出请求，服务器也做出响应了，但服务器却不知道是否是同一个客户端发出的请求。而cookie可以保存一段信息，在请求时发给服务器让无状态的HTTP协议也可以记录状态信息。">
+<meta property="og:image" content="https://raw.githubusercontent.com/huanghaibin91/My-JS/master/image/cookie.png">
+<meta property="og:updated_time" content="2018-03-25T09:24:45.350Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="HHB&#39;s BLOG">
-<meta name="twitter:description" content="huanghaibin91 的博客">
+<meta name="twitter:title" content="My-JS之本地存储">
+<meta name="twitter:description" content="Cookie HTTP是一个不保存状态的协议，也就说同个客户端即使多次向同个服务器发出请求，服务器也做出响应了，但服务器却不知道是否是同一个客户端发出的请求。而cookie可以保存一段信息，在请求时发给服务器让无状态的HTTP协议也可以记录状态信息。">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/huanghaibin91/My-JS/master/image/cookie.png">
   
     <link rel="alternative" href="/atom.xml" title="HHB&#39;s BLOG" type="application/atom+xml">
   
@@ -144,36 +148,114 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-storage" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      My-JS之本地存储
+    </h1>
+  
+
+        
+        <a href="/2018/03/25/storage/" class="archive-article-date">
+  	<time datetime="2018-03-25T09:22:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-25</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>Cookie</strong></p>
+<p>HTTP是一个不保存状态的协议，也就说同个客户端即使多次向同个服务器发出请求，服务器也做出响应了，但服务器却不知道是否是同一个客户端发出的请求。而cookie可以保存一段信息，在请求时发给服务器让无状态的HTTP协议也可以记录状态信息。</p>
+<p><img src="https://raw.githubusercontent.com/huanghaibin91/My-JS/master/image/cookie.png" alt="cookie原理"></p>
+<a id="more"></a>
+<p>第一次访问网站的时候，浏览器发出请求，服务器响应请求后，会将cookie放入到响应请求中，这样会在客户端设置一个cookie。当浏览器第二次发请求的时候，会把这个cookie带给服务器，服务端会解析cookie辨别用户身份，当然服务器也可以修改cookie内容。</p>
+<ul>
+<li><p>客户端设置cookie时，cookie为一个字符串，cookie各个属性之间以<code>;</code>分开，cookie属性：</p>
+<ul>
+<li><code>name</code>，唯一一个cookie名称，cookie不区分大小写，必须经过URL编码；</li>
+<li><code>value</code>，存储在cookie中的字符串值，必须被URL编码；</li>
+<li><code>domain</code>，cookie绑定的域名，如果没有设置，就会自动绑定到执行语句的当前域；</li>
+<li><code>path</code>，cookie绑定域名的路由，只有满足路由条件才会发送cookie，path默认值为设置该cookie的网页所在的目录；</li>
+<li><p><code>expires</code>，cookie有效期，格式满足GMT时间格式，失效的cookie会被删除，当设置的失效日期是一个当前时间以前的时间或为设置，此cookie会在浏览器关闭之后删除；</p>
+<blockquote>
+<p>expires是http/1.0协议中的选项，在新的http/1.1协议中expires已经由max-age选项代替，两者的作用都是限制cookie的有效时间。expires的值是一个时间点（cookie失效时刻 = expires），而max-age的值是一个以秒为单位时间段（cookie失效时刻 = 创建时刻 + max-age）。另外，max-age的默认值是 -1（即有效期为session）；</p>
+<p>max-age有三种可能值：负数、0、正数。负数：有效期session；0：删除cookie；正数：有效期为创建时刻 + max-age。</p>
+</blockquote>
+</li>
+<li><code>secure</code>，属性设置为true时，此cookie只会在https和ssl等安全协议下才会发送给服务器；</li>
+<li><p><code>HttpOnly</code>，属性设置为true时，就不能通过js脚本来获取cookie的值，能有效的防止xss击；</p>
+<pre><code>document.cookie = &quot;name=value; expires=GMT time; domain=domain.com; path=/; secure; HttpOnly&quot;; // secure、HttpOnly设置即为true，不设置就是false
+</code></pre></li>
+</ul>
+</li>
+<li><p>cookie特点：</p>
+<ul>
+<li>cookie不可跨域；</li>
+<li>每个域的cookie总数是有限的；</li>
+<li>单个cookie长度限制在4K（4095B）以内；</li>
+<li>当name/domain/path 这3个字段都相同的时候设置cookie会覆盖已设置cookie；</li>
+<li>cookie不能直接删除，需要使用相同的属性再次设置此cookie，并将其失效时间设置为过去时间，便会在浏览器关闭时删除cookie；</li>
+</ul>
+</li>
+<li><p>JS操作cookie，<code>document.cookie</code>（这个方法只能获取非HttpOnly类型的cookie）：<a href="">封装的cookie操作</a></p>
+</li>
+</ul>
+<p>在服务器端，还有一个与cookie相似的在服务器端使用的一种记录客户端状态的机制session，cookie与session有以下区别：</p>
+<ul>
+<li>cookie数据存放在客户的浏览器上，session数据放在服务器上；</li>
+<li>cookie不是很安全，别人可以分析存放在本地的cookie并进行cookie欺骗考虑到安全应当使用 session；</li>
+<li>session会在一定时间内保存在服务器上。当访问增多，会比较占用你服务器的性能考虑到减轻服务器性能方面，应当使用cookie；</li>
+<li>单个cookie保存的数据不能超过4K，很多浏览器都限制一个站点最多保存20个cookie；</li>
+</ul>
+<p>鉴于上述区别我们建议：将登陆信息等重要信息存放为session，其他信息如果需要保留，可以放在cookie中。</p>
+<p><strong>Storage</strong></p>
+<p>Web Storage提供客户端的信息存储，storage类型的属性：</p>
+<ul>
+<li><p>storage类型的属性：</p>
+<ul>
+<li><code>getItem(name)</code>，获取name对应的值；</li>
+<li><code>key(index)</code>，获取index位置的键名；</li>
+<li><code>removeItem(name)</code>，删除name指定的名值对；</li>
+<li><code>setItem(name, value)</code>，为那么设置对应的值；</li>
+<li><code>length</code>，名值对长度；</li>
+<li><code>clear()</code>，删除所有值；</li>
+</ul>
+</li>
+<li><p>storage类型特点：</p>
+<ul>
+<li>localStorage每个来源有5M的大小限制，sessionStorage也有大小限制；</li>
+<li>storage类型只能存储字符串，如果想存储对象，可以将数据先调用<code>JSON.stringify()</code>将对象转换为字符串，使用时再使用<code>JSON.parse()</code>将数据解析为对象；</li>
+</ul>
+</li>
+<li><p><code>sessionStorage</code>，会话存储，该数据只保持到浏览器关闭，sessionStorage比localStorage更严苛一点，除了协议、主机名、端口外，还要求在同一窗口（也就是浏览器的标签页）下才可访问；</p>
+</li>
+<li><code>localStorage</code>，IE8+，浏览器持久保存数据的存储对象，localStorage的访问域默认设定为设置localStorage的当前域，需满足同源策略才能访问同一个localStorage；</li>
+</ul>
+<p><strong>IndexDB</strong></p>
+<p>浏览器保存结构化数据的数据库。indexedDB的操作都是异步的。</p>
+<p><strong>HTML标签data属性</strong></p>
+<p><code>data-*</code> 属性用于存储私有页面后应用的自定义数据。data-<em> 属性可以在所有的 HTML 元素中嵌入数据。自定义的数据可以让页面拥有更好的交互体验（不需要使用 Ajax 或去服务端查询数据）。data-</em> 属性由以下两部分组成：属性名不要包含大写字母，在 data- 后必须至少有一个字符。该属性可以是任何字符串。</p>
+<pre><code>&lt;!-- data-*有两种设置方式，可以直接在HTML元素标签上书写 --&gt;
+&lt;p id=&quot;p1&quot; data-mydata=&quot;mydata&quot;&gt;Hello World&lt;/p&gt;
+&lt;!-- 使用JS设置data属性 --&gt;
+&lt;p id=&quot;p2&quot;&gt;Hello World&lt;/p&gt;
+
+// HTML5中元素都会有一个dataset的属性，这是一个DOMStringMap类型的键值对集合，可以设置读取data属性
+var p2 = document.getElementById(&apos;p2&apos;);
+p2.dataset.yourdata = &apos;yourdata&apos;;
+// 删掉一个 data-属性 ，可以这么做： delete el.dataset.id ;  或者 el.dataset.id = null
+</code></pre>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/12/31/class/" class="archive-article-date">
-  	<time datetime="2017-12-31T08:41:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-31</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/12/31/class/">My-JS之类</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -189,385 +271,54 @@
 		</ul>
 	</div>
 
-          
+      
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/12/31/this/" class="archive-article-date">
-  	<time datetime="2017-12-31T08:39:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-31</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2018/03/25/object/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">My-JS之对象</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/12/31/this/">My-JS之this</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">前端</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/12/31/module/" class="archive-article-date">
-  	<time datetime="2017-12-31T08:37:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-31</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/12/31/module/">My-JS之模块</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">前端</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/12/30/closure/" class="archive-article-date">
-  	<time datetime="2017-12-30T06:36:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/12/30/closure/">My-JS之闭包</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">前端</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/12/30/function/" class="archive-article-date">
-  	<time datetime="2017-12-30T06:29:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/12/30/function/">My-JS之函数</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">前端</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/12/30/execution-context/" class="archive-article-date">
-  	<time datetime="2017-12-30T06:27:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/12/30/execution-context/">My-JS之执行上下文</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">前端</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/12/30/scope/" class="archive-article-date">
-  	<time datetime="2017-12-30T06:25:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/12/30/scope/">My-JS之作用域</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">前端</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/12/29/type-conversion/" class="archive-article-date">
-  	<time datetime="2017-12-29T13:12:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-29</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/12/29/type-conversion/">My-JS之类型转换</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/12/29/type-detection/" class="archive-article-date">
-  	<time datetime="2017-12-29T13:10:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-29</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/12/29/type-detection/">My-JS之类型检测</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">前端</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/12/29/variable/" class="archive-article-date">
-  	<time datetime="2017-12-29T12:57:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-29</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/12/29/variable/">My-JS之变量</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">前端</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/">&laquo; Prev</a><a class="page-number" href="/archives/">1</a><span class="page-number current">2</span><a class="page-number" href="/archives/page/3/">3</a><a class="extend next" rel="next" href="/archives/page/3/">Next &raquo;</a>
-    </nav>
   
 
 
@@ -592,8 +343,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

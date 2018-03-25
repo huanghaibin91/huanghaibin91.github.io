@@ -6,17 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://huanghaibin91.github.io">
-  <title>Archives | HHB&#39;s BLOG</title>
+  <title>My-JS之对象 | HHB&#39;s BLOG</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="huanghaibin91 的博客">
-<meta property="og:type" content="website">
-<meta property="og:title" content="HHB&#39;s BLOG">
-<meta property="og:url" content="https://huanghaibin91.github.io/archives/page/2/index.html">
+  <meta name="description" content="对象就是一组数据和功能的集合。 对象声明  构造函数声明，调用new Object()构造函数声明对象； 对象字面量声明，使用var obj = {}；声明对象，推荐；">
+<meta name="keywords" content="前端,JavaScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="My-JS之对象">
+<meta property="og:url" content="https://huanghaibin91.github.io/2018/03/25/object/index.html">
 <meta property="og:site_name" content="HHB&#39;s BLOG">
-<meta property="og:description" content="huanghaibin91 的博客">
+<meta property="og:description" content="对象就是一组数据和功能的集合。 对象声明  构造函数声明，调用new Object()构造函数声明对象； 对象字面量声明，使用var obj = {}；声明对象，推荐；">
+<meta property="og:updated_time" content="2018-03-25T09:21:48.023Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="HHB&#39;s BLOG">
-<meta name="twitter:description" content="huanghaibin91 的博客">
+<meta name="twitter:title" content="My-JS之对象">
+<meta name="twitter:description" content="对象就是一组数据和功能的集合。 对象声明  构造函数声明，调用new Object()构造函数声明对象； 对象字面量声明，使用var obj = {}；声明对象，推荐；">
   
     <link rel="alternative" href="/atom.xml" title="HHB&#39;s BLOG" type="application/atom+xml">
   
@@ -144,36 +146,81 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-object" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      My-JS之对象
+    </h1>
+  
+
+        
+        <a href="/2018/03/25/object/" class="archive-article-date">
+  	<time datetime="2018-03-25T09:20:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-25</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>对象就是一组数据和功能的集合。</p>
+<p><strong>对象声明</strong></p>
+<ul>
+<li>构造函数声明，调用<code>new Object()</code>构造函数声明对象；</li>
+<li>对象字面量声明，使用<code>var obj = {}；</code>声明对象，推荐；</li>
+</ul>
+<a id="more"></a>
+<p><strong>对象构造函数方法</strong></p>
+<ul>
+<li><p>对象属性模型的相关方法：</p>
+<ul>
+<li><code>Object.getOwnPropertyDescriptor()</code>，获取某个属性的描述对象；</li>
+<li><code>Object.defineProperty()</code>，通过属性描述对象，定义某个属性；</li>
+<li><code>Object.defineProperties()</code>，通过属性描述对象，定义多个属性；</li>
+<li><code>Object.getOwnPropertyNames()</code>，返回直接定义在某个对象上面的全部属性的名称，返回一个数组，不包含继承和原型的属性键名，Object.getOwnPropertyNames方法还返回不可枚举的属性名，类似数组的长度属性或者对象constructor属性；</li>
+<li><code>Object.keys()</code>，遍历对象的属性，返回一个数组，该数组的成员都是对象自身的（而不是继承和原型的）所有属性名；</li>
+</ul>
+</li>
+<li><p>控制对象状态的方法：  </p>
+<ul>
+<li><code>Object.preventExtensions()</code>，防止对象扩展，保留已有属性，禁止添加新属性；</li>
+<li><code>Object.isExtensible()</code>，判断对象是否可扩展；</li>
+<li><code>Object.seal()</code>，禁止对象配置，这个方法实际上会在一个现有对象上调用<code>Object.preventExtensions()</code> 并把所有现有属性标为<code>configurable: false</code>密封之后不仅不能添加新属性， 也不能重新配置或者删除任何现有属性（ 虽然可以修改属性的值）；</li>
+<li><code>Object.isSealed()</code>，判断一个对象是否可配置；</li>
+<li><code>Object.freeze()</code>，冻结一个对象，这个方法实际上会在一个现有对象上调用<code>Object.seal()</code>并把所有“数据访问” 属性标记为 <code>writable:false</code>，这样就无法修改它们的值；</li>
+<li><code>Object.isFrozen()</code>，判断一个对象是否被冻结；</li>
+</ul>
+</li>
+<li><p>原型链相关方法：</p>
+<ul>
+<li><code>Object.create()</code>，该方法可以指定原型对象和属性，返回一个新的对象；</li>
+<li><code>Object.getPrototypeOf()</code>，获取对象的Prototype对象；</li>
+<li><code>obj1.prototype.isPrototypeOf(obj2)</code>，obj1.prototype是否是obj2的原型；</li>
+</ul>
+</li>
+</ul>
+<p><strong>对象实例属性和方法</strong></p>
+<ul>
+<li><code>obj.constructor</code>，保存着用于创建当前对象的函数，即当前对象的构造函数；</li>
+<li><code>obj.hasOwnProperty(propertyName)</code>，用于检验属性是否在实例中，而不是原型中，返回布尔值；</li>
+<li><code>obj.isPrototypeOf(object)</code>，用于检查当前对象obj是否是传入的对象object的原型；</li>
+<li><code>obj.propertyIsEnumerable(propertyName)</code>，检查属性properName是否能用for-in枚举；</li>
+<li><code>obj.toLocalString()</code>，返回对象的字符串表示，该只付出爱与执行环境对应；</li>
+<li><code>obj.toString()</code>，要求的是字符串那么就会调用toString，如果调用toString方法的是数字可以传入参数，以指定进制表示的字符串；</li>
+<li><code>obj.valueOf()</code>，要求的是原始值那么就会调用valueOf；</li>
+<li><code>delete obj.propertyName</code>，删除对象属性，只能删除自身的属性，不能删除继承和原型的属性；</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/12/31/class/" class="archive-article-date">
-  	<time datetime="2017-12-31T08:41:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-31</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/12/31/class/">My-JS之类</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -189,385 +236,63 @@
 		</ul>
 	</div>
 
-          
+      
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/12/31/this/" class="archive-article-date">
-  	<time datetime="2017-12-31T08:39:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-31</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2018/03/25/storage/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          My-JS之本地存储
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/02/08/mobile/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">移动端布局解决方案</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/12/31/this/">My-JS之this</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">前端</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/12/31/module/" class="archive-article-date">
-  	<time datetime="2017-12-31T08:37:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-31</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/12/31/module/">My-JS之模块</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">前端</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/12/30/closure/" class="archive-article-date">
-  	<time datetime="2017-12-30T06:36:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/12/30/closure/">My-JS之闭包</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">前端</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/12/30/function/" class="archive-article-date">
-  	<time datetime="2017-12-30T06:29:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/12/30/function/">My-JS之函数</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">前端</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/12/30/execution-context/" class="archive-article-date">
-  	<time datetime="2017-12-30T06:27:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/12/30/execution-context/">My-JS之执行上下文</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">前端</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/12/30/scope/" class="archive-article-date">
-  	<time datetime="2017-12-30T06:25:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/12/30/scope/">My-JS之作用域</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">前端</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/12/29/type-conversion/" class="archive-article-date">
-  	<time datetime="2017-12-29T13:12:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-29</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/12/29/type-conversion/">My-JS之类型转换</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/12/29/type-detection/" class="archive-article-date">
-  	<time datetime="2017-12-29T13:10:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-29</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/12/29/type-detection/">My-JS之类型检测</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">前端</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/12/29/variable/" class="archive-article-date">
-  	<time datetime="2017-12-29T12:57:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-29</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/12/29/variable/">My-JS之变量</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">前端</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/">&laquo; Prev</a><a class="page-number" href="/archives/">1</a><span class="page-number current">2</span><a class="page-number" href="/archives/page/3/">3</a><a class="extend next" rel="next" href="/archives/page/3/">Next &raquo;</a>
-    </nav>
   
 
 
@@ -592,8 +317,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
